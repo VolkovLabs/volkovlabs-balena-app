@@ -88,7 +88,7 @@ describe('Api', () => {
   });
 
   /**
-   * getDvice, getDeviceFrame
+   * getDevice, getDeviceFrame
    */
   describe('getDevice', () => {
     let response = {
@@ -123,6 +123,44 @@ describe('Api', () => {
       let result = await api.getDeviceFrame({ refId: 'A', requestType: RequestTypeValue.DEVICE });
       expect(result?.length).toEqual(1);
       expect(result[0].fields.length).toEqual(11);
+    });
+  });
+
+  /**
+   * getStateStatus, getStateStatusFrame
+   */
+  describe('getStateStatus', () => {
+    let response = {
+      status: 200,
+      statusText: 'OK',
+      ok: true,
+      data: '{"status":"success","appState":"applied","overallDownloadProgress":null,"containers":[],"release":"93a21afbb594139716164a8222c05ffa"}',
+      headers: {},
+      url: 'https://localhost/api/datasources/proxy/1/v2/state/status',
+      type: 'basic',
+      redirected: false,
+      config: {
+        method: 'GET',
+        url: 'api/datasources/proxy/1/v2/state/status',
+        responseType: 'text',
+        retry: 0,
+        headers: {
+          'X-Grafana-Org-Id': 1,
+        },
+        hideFromInspector: false,
+      },
+    };
+
+    it('Should make getStateStatus request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+      let result = await api.getStateStatus();
+      expect(result).toBeTruthy();
+    });
+
+    it('Should make getStateStatusFrame request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+      let result = await api.getStateStatusFrame({ refId: 'A', requestType: RequestTypeValue.STATE_STATUS });
+      expect(result?.length).toEqual(1);
     });
   });
 });

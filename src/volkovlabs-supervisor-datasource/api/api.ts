@@ -1,10 +1,10 @@
 import { lastValueFrom } from 'rxjs';
 import { DataSourceInstanceSettings, FieldType, MutableDataFrame } from '@grafana/data';
 import { getBackendSrv } from '@grafana/runtime';
-import { RequestTypeValue } from '../constants';
+import { defaultQuery, RequestTypeValue } from '../constants';
 import { DataSourceOptions, Query } from '../types';
 import { parseJSONToCamelCase } from '../utils';
-import { Device } from './models';
+import { Device, StateStatus } from './models';
 
 /**
  * API
@@ -75,8 +75,6 @@ export class Api {
       return null;
     }
 
-    console.log(device);
-
     return device;
   }
 
@@ -90,9 +88,9 @@ export class Api {
     }
 
     /**
-     * Create Device frame
+     * Create frame
      */
-    const deviceFrame = new MutableDataFrame({
+    const frame = new MutableDataFrame({
       name: RequestTypeValue.DEVICE,
       refId: query.refId,
       fields: [
@@ -110,6 +108,127 @@ export class Api {
       ],
     });
 
-    return [deviceFrame];
+    return [frame];
+  }
+
+  /**
+   * Get State Status
+   */
+  async getStateStatus(): Promise<StateStatus | null> {
+    const response = await lastValueFrom(
+      getBackendSrv().fetch({
+        method: 'GET',
+        url: `${this.instanceSettings.url}/v2/state/status`,
+        responseType: 'text',
+      })
+    ).catch(function (e) {
+      console.error(e.statusText);
+    });
+
+    /**
+     * Check Response
+     */
+    if (!response || !response.data) {
+      console.error('Get State Status: API Request failed', response);
+      return null;
+    }
+
+    /**
+     * Check Host Config
+     */
+    const stateStatus = parseJSONToCamelCase(response.data as any) as StateStatus;
+    if (!stateStatus) {
+      console.log('State Status is not found');
+      return null;
+    }
+
+    return stateStatus;
+  }
+
+  /**
+   * Get State Status Frame
+   */
+  async getStateStatusFrame(query: Query): Promise<MutableDataFrame[]> {
+    const stateStatus = await this.getStateStatus();
+    if (!stateStatus) {
+      return [];
+    }
+
+    /**
+     * Create frame
+     */
+    const frame = new MutableDataFrame({
+      name: RequestTypeValue.STATE_STATUS,
+      refId: query.refId,
+      fields: [],
+    });
+
+    return [frame];
+  }
+
+  /**
+   * Get Journal Logs
+   */
+  async getJournalLogs(
+    count = defaultQuery.logCount,
+    unit = defaultQuery.logUnit,
+    format = defaultQuery.logFormat
+  ): Promise<string[]> {
+    const response = await lastValueFrom(
+      getBackendSrv().fetch({
+        method: 'POST',
+        url: `${this.instanceSettings.url}/v2/journal-logs`,
+        responseType: 'text',
+        data: { follow: false, all: false, format, count, unit },
+      })
+    ).catch(function (e) {
+      console.error(e.statusText);
+    });
+
+    /**
+     * Check Response
+     */
+    if (!response || !response.data) {
+      console.error('Get Journal Logs: API Request failed', response);
+      return [];
+    }
+
+    /**
+     * Check Logs
+     */
+    const data = response.data as string;
+    if (!data) {
+      console.log('Logs are not found');
+      return [];
+    }
+
+    return data.split('\n');
+  }
+
+  /**
+   * Get Journal Logs Frame
+   */
+  async getJournalLogsFrame(query: Query): Promise<MutableDataFrame[]> {
+    const logs = await this.getJournalLogs(query.logCount, query.logUnit, query.logFormat);
+    if (!logs) {
+      return [];
+    }
+
+    /**
+     * Create frame
+     */
+    const frame = new MutableDataFrame({
+      name: RequestTypeValue.LOGS,
+      refId: query.refId,
+      meta: {
+        preferredVisualisationType: 'logs',
+      },
+      fields: [
+        { name: 'time', type: FieldType.time },
+        { name: 'content', type: FieldType.string, values: logs },
+      ],
+    });
+
+    return [frame];
   }
 }

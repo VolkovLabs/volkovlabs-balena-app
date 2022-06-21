@@ -26,6 +26,7 @@
     "updated": "%TODAY%",
     "version": "%VERSION%"
   },
+  "logs": true,
   "metrics": true,
   "name": "Balena Supervisor",
   "routes": [
@@ -42,8 +43,8 @@
       "url": "{{ .JsonData.url }}/v1",
       "urlParams": [
         {
-          "name": "apikey",
-          "content": "{{ .SecureJsonData.apiKey }}"
+          "content": "{{ .SecureJsonData.apiKey }}",
+          "name": "apikey"
         }
       ]
     },
@@ -51,7 +52,13 @@
       "method": "*",
       "path": "v2",
       "reqRole": "Viewer",
-      "url": "{{ .JsonData.url }}/v2"
+      "url": "{{ .JsonData.url }}/v2",
+      "urlParams": [
+        {
+          "content": "{{ .SecureJsonData.apiKey }}",
+          "name": "apikey"
+        }
+      ]
     }
   ],
   "type": "datasource"

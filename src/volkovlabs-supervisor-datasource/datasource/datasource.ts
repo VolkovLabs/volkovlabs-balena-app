@@ -49,6 +49,12 @@ export class DataSource extends DataSourceApi<Query, DataSourceOptions> {
           case RequestTypeValue.DEVICE:
             frames = await this.api.getDeviceFrame(target);
             break;
+          case RequestTypeValue.STATE_STATUS:
+            frames = await this.api.getStateStatusFrame(target);
+            break;
+          case RequestTypeValue.LOGS:
+            frames = await this.api.getJournalLogsFrame(target);
+            break;
         }
 
         if (!frames || !frames.length) {
