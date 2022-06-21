@@ -29,138 +29,6 @@
   "panels": [
     {
       "datasource": {
-        "type": "volkovlabs-supervisor-datasource",
-        "uid": "P9E471951A1B4106C"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 0,
-        "y": 0
-      },
-      "id": 7,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/^Hostname$/",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.0.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "volkovlabs-supervisor-datasource",
-            "uid": "P9E471951A1B4106C"
-          },
-          "refId": "A",
-          "requestType": "hostConfig"
-        }
-      ],
-      "title": "Hostname",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "volkovlabs-supervisor-datasource",
-        "uid": "P9E471951A1B4106C"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 4,
-        "y": 0
-      },
-      "id": 4,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/.*/",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.0.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "volkovlabs-supervisor-datasource",
-            "uid": "P9E471951A1B4106C"
-          },
-          "refId": "A",
-          "requestType": "device"
-        }
-      ],
-      "title": "Version",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Commit": true,
-              "IP address": true,
-              "MAC address": true,
-              "Port": true,
-              "Progress": true,
-              "Status": true,
-              "Update Downloaded": true,
-              "Update Failed": true,
-              "Update Pending": true
-            },
-            "indexByName": {},
-            "renameByName": {}
-          }
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
         "type": "datasource",
         "uid": "-- Dashboard --"
       },
@@ -183,9 +51,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 5,
-        "x": 10,
+        "x": 0,
         "y": 0
       },
       "id": 5,
@@ -213,6 +81,126 @@
         }
       ],
       "title": "IP",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "volkovlabs-supervisor-datasource",
+        "uid": "P9E471951A1B4106C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 5,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "/^OS$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-supervisor-datasource",
+            "uid": "P9E471951A1B4106C"
+          },
+          "logCount": 200,
+          "logFormat": "short",
+          "logUnit": "balena.service",
+          "refId": "A",
+          "requestType": "device"
+        }
+      ],
+      "title": "OS",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "volkovlabs-supervisor-datasource",
+        "uid": "P9E471951A1B4106C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 10,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "/^Supervisor$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-supervisor-datasource",
+            "uid": "P9E471951A1B4106C"
+          },
+          "logCount": 200,
+          "logFormat": "short",
+          "logUnit": "balena.service",
+          "refId": "A",
+          "requestType": "device"
+        }
+      ],
+      "title": "Supervisor",
+      "transformations": [],
       "type": "stat"
     },
     {
@@ -249,7 +237,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 5,
         "x": 15,
         "y": 0
@@ -354,7 +342,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 20,
         "y": 0
@@ -392,10 +380,10 @@
         "uid": "P9E471951A1B4106C"
       },
       "gridPos": {
-        "h": 27,
-        "w": 24,
+        "h": 28,
+        "w": 15,
         "x": 0,
-        "y": 4
+        "y": 3
       },
       "id": 9,
       "options": {
@@ -421,6 +409,70 @@
       ],
       "title": "Logs",
       "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "volkovlabs-supervisor-datasource",
+        "uid": "P9E471951A1B4106C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 28,
+        "w": 9,
+        "x": 15,
+        "y": 3
+      },
+      "id": 12,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-supervisor-datasource",
+            "uid": "P9E471951A1B4106C"
+          },
+          "logCount": 200,
+          "logFormat": "short",
+          "logUnit": "balena.service",
+          "refId": "A",
+          "requestType": "status"
+        }
+      ],
+      "title": "Services",
+      "type": "table"
     }
   ],
   "schemaVersion": 36,
@@ -439,6 +491,6 @@
   "timezone": "",
   "title": "Balena Supervisor",
   "uid": "cI_2Xn3nk",
-  "version": 4,
+  "version": 5,
   "weekStart": ""
 }

@@ -119,7 +119,7 @@ export class Api {
       getBackendSrv().fetch({
         method: 'GET',
         url: `${this.instanceSettings.url}/v2/state/status`,
-        responseType: 'text',
+        responseType: 'json',
       })
     ).catch(function (e) {
       console.error(e.statusText);
@@ -136,7 +136,7 @@ export class Api {
     /**
      * Check Host Config
      */
-    const stateStatus = parseJSONToCamelCase(response.data as any) as StateStatus;
+    const stateStatus = response.data as StateStatus;
     if (!stateStatus) {
       console.log('State Status is not found');
       return null;
@@ -154,13 +154,47 @@ export class Api {
       return [];
     }
 
+    console.log(stateStatus);
+
     /**
      * Create frame
      */
     const frame = new MutableDataFrame({
       name: RequestTypeValue.STATE_STATUS,
       refId: query.refId,
-      fields: [],
+      fields: [
+        {
+          name: 'Created At',
+          values: stateStatus.containers.map((container) => container.createdAt),
+          type: FieldType.time,
+        },
+        {
+          name: 'Name',
+          values: stateStatus.containers.map((container) => container.serviceName),
+          type: FieldType.string,
+        },
+        {
+          name: 'Id',
+          values: stateStatus.containers.map((container) => container.serviceId),
+          type: FieldType.string,
+        },
+        {
+          name: 'Application',
+          values: stateStatus.containers.map((container) => container.appId),
+          type: FieldType.string,
+        },
+        {
+          name: 'Container',
+          values: stateStatus.containers.map((container) => container.containerId),
+          type: FieldType.string,
+        },
+        {
+          name: 'Image',
+          values: stateStatus.containers.map((container) => container.imageId),
+          type: FieldType.string,
+        },
+        { name: 'Status', values: stateStatus.containers.map((container) => container.status), type: FieldType.string },
+      ],
     });
 
     return [frame];
