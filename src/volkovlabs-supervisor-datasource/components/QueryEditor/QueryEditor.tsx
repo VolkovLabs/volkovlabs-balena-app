@@ -1,9 +1,16 @@
 import { defaults } from 'lodash';
 import React, { PureComponent } from 'react';
-import { css } from '@emotion/css';
 import { QueryEditorProps, SelectableValue } from '@grafana/data';
-import { InlineFieldRow, InlineFormLabel, Select } from '@grafana/ui';
-import { defaultQuery, RequestType, RequestTypeValue } from '../../constants';
+import { InlineField, InlineFieldRow, Select, Slider } from '@grafana/ui';
+import {
+  defaultQuery,
+  LogFormat,
+  LogFormatValue,
+  LogUnit,
+  LogUnitValue,
+  RequestType,
+  RequestTypeValue,
+} from '../../constants';
 import { DataSource } from '../../datasource';
 import { DataSourceOptions, Query } from '../../types';
 
@@ -26,24 +33,78 @@ export class QueryEditor extends PureComponent<Props> {
   };
 
   /**
+   * Log Format change
+   */
+  onLogFormatChange = async (item: SelectableValue<LogFormatValue>) => {
+    const { onChange, onRunQuery, query } = this.props;
+    onChange({ ...query, logFormat: item.value! });
+    onRunQuery();
+  };
+
+  /**
+   * Log Unit change
+   */
+  onLogUnitChange = async (item: SelectableValue<LogUnitValue>) => {
+    const { onChange, onRunQuery, query } = this.props;
+    onChange({ ...query, logUnit: item.value! });
+    onRunQuery();
+  };
+
+  /**
+   * Log Count change
+   */
+  onLogCountChange = async (value: number) => {
+    const { onChange, onRunQuery, query } = this.props;
+    onChange({ ...query, logCount: value });
+    onRunQuery();
+  };
+
+  /**
    * Render
    */
   render() {
     const query = defaults(this.props.query, defaultQuery);
 
     return (
-      <InlineFieldRow>
-        <InlineFormLabel width={8}>Request</InlineFormLabel>
-        <Select
-          className={css`
-            margin-right: 5px;
-          `}
-          width={40}
-          options={RequestType}
-          value={RequestType.find((type) => type.value === query.requestType)}
-          onChange={this.onRequestTypeChange}
-        />
-      </InlineFieldRow>
+      <>
+        <InlineFieldRow>
+          <InlineField grow label="Request" labelWidth={10}>
+            <Select
+              options={RequestType}
+              value={RequestType.find((type) => type.value === query.requestType)}
+              onChange={this.onRequestTypeChange}
+            />
+          </InlineField>
+        </InlineFieldRow>
+
+        {query.requestType === RequestTypeValue.LOGS && (
+          <InlineFieldRow>
+            <InlineField label="Format" labelWidth={10} tooltip="Allows to specify custom value">
+              <Select
+                width={40}
+                allowCustomValue
+                options={LogFormat}
+                value={LogFormat.find((format) => format.value === query.logFormat)}
+                onChange={this.onLogFormatChange}
+              />
+            </InlineField>
+
+            <InlineField label="Unit" labelWidth={10} tooltip="Allows to specify custom value">
+              <Select
+                width={40}
+                allowCustomValue
+                options={LogUnit}
+                value={LogUnit.find((unit) => unit.value === query.logUnit)}
+                onChange={this.onLogUnitChange}
+              />
+            </InlineField>
+
+            <InlineField grow label="Count" labelWidth={10}>
+              <Slider value={query.logCount} min={100} max={2000} onChange={this.onLogCountChange} />
+            </InlineField>
+          </InlineFieldRow>
+        )}
+      </>
     );
   }
 }

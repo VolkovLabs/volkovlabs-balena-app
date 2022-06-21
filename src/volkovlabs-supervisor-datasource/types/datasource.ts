@@ -1,17 +1,5 @@
-import { DataQuery, DataSourceJsonData, DataSourceRef } from '@grafana/data';
-import { Api } from './api';
-
-/**
- * Query
- */
-export interface Query extends DataQuery {
-  /**
-   * Request Type
-   *
-   * @type {string}
-   */
-  requestType?: string;
-}
+import { DataSourceJsonData, DataSourceRef } from '@grafana/data';
+import { Api } from '../api';
 
 /**
  * Datasource Options
