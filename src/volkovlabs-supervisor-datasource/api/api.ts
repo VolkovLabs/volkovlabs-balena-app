@@ -154,8 +154,6 @@ export class Api {
       return [];
     }
 
-    console.log(stateStatus);
-
     /**
      * Create frame
      */
@@ -165,35 +163,39 @@ export class Api {
       fields: [
         {
           name: 'Created At',
-          values: stateStatus.containers.map((container) => container.createdAt),
+          values: stateStatus.containers?.map((container) => container.createdAt),
           type: FieldType.time,
         },
         {
           name: 'Name',
-          values: stateStatus.containers.map((container) => container.serviceName),
+          values: stateStatus.containers?.map((container) => container.serviceName),
           type: FieldType.string,
         },
         {
           name: 'Id',
-          values: stateStatus.containers.map((container) => container.serviceId),
+          values: stateStatus.containers?.map((container) => container.serviceId),
           type: FieldType.string,
         },
         {
           name: 'Application',
-          values: stateStatus.containers.map((container) => container.appId),
+          values: stateStatus.containers?.map((container) => container.appId),
           type: FieldType.string,
         },
         {
           name: 'Container',
-          values: stateStatus.containers.map((container) => container.containerId),
+          values: stateStatus.containers?.map((container) => container.containerId),
           type: FieldType.string,
         },
         {
           name: 'Image',
-          values: stateStatus.containers.map((container) => container.imageId),
+          values: stateStatus.containers?.map((container) => container.imageId),
           type: FieldType.string,
         },
-        { name: 'Status', values: stateStatus.containers.map((container) => container.status), type: FieldType.string },
+        {
+          name: 'Status',
+          values: stateStatus.containers?.map((container) => container.status),
+          type: FieldType.string,
+        },
       ],
     });
 
