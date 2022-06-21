@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "dependencies": {
+    "grafanaDependency": ">=8.5.0",
+    "plugins": []
+  },
+  "id": "volkovlabs-supervisor-datasource",
+  "info": {
+    "author": {
+      "name": "Volkov Labs",
+      "url": "https://volkovlabs.io"
+    },
+    "description": "Balena Supervisor API",
+    "keywords": ["balena"],
+    "links": [
+      {
+        "name": "Website",
+        "url": "https://volkovlabs.io"
+      }
+    ],
+    "logos": {
+      "large": "img/logo.svg",
+      "small": "img/logo.svg"
+    },
+    "screenshots": [],
+    "updated": "%TODAY%",
+    "version": "%VERSION%"
+  },
+  "metrics": true,
+  "name": "Balena Supervisor",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "ping",
+      "reqRole": "Viewer",
+      "url": "{{ .JsonData.url }}/ping"
+    },
+    {
+      "method": "*",
+      "path": "v1",
+      "reqRole": "Viewer",
+      "url": "{{ .JsonData.url }}/v1",
+      "urlParams": [
+        {
+          "name": "apikey",
+          "content": "{{ .SecureJsonData.apiKey }}"
+        }
+      ]
+    },
+    {
+      "method": "*",
+      "path": "v2",
+      "reqRole": "Viewer",
+      "url": "{{ .JsonData.url }}/v2"
+    }
+  ],
+  "type": "datasource"
+}
