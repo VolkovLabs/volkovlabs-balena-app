@@ -2,7 +2,7 @@ apiVersion: 1
 
 datasources:
   - name: API
-    type: volkovlabs-supervisor-datasource
+    type: volkovlabs-balenasupervisor-datasource
     uid: P9E471951A1B4106C
     jsonData:
       url: ${BALENA_SUPERVISOR_ADDRESS}

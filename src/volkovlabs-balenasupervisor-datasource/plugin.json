@@ -4,7 +4,7 @@
     "grafanaDependency": ">=8.5.0",
     "plugins": []
   },
-  "id": "volkovlabs-supervisor-datasource",
+  "id": "volkovlabs-balenasupervisor-datasource",
   "info": {
     "author": {
       "name": "Volkov Labs",
