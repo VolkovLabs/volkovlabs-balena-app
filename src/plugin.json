@@ -4,7 +4,7 @@
     "grafanaDependency": ">=8.5.0",
     "plugins": []
   },
-  "id": "volkovlabs-abc-app",
+  "id": "volkovlabs-balena-app",
   "info": {
     "author": {
       "name": "Volkov Labs",
@@ -32,11 +32,11 @@
       "defaultNav": true,
       "icon": "home-alt",
       "name": "Home",
-      "path": "/a/volkovlabs-abc-app/",
+      "path": "/a/volkovlabs-balena-app/",
       "role": "Viewer",
       "type": "page"
     }
   ],
-  "name": "Abc Application",
+  "name": "Balena Application",
   "type": "app"
 }
