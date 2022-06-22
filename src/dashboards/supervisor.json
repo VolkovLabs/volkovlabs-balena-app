@@ -86,7 +86,7 @@
     {
       "datasource": {
         "type": "volkovlabs-balenasupervisor-datasource",
-        "uid": "P9E471951A1B4106C"
+        "uid": "${supervisor}"
       },
       "fieldConfig": {
         "defaults": {
@@ -130,7 +130,7 @@
         {
           "datasource": {
             "type": "volkovlabs-balenasupervisor-datasource",
-            "uid": "P9E471951A1B4106C"
+            "uid": "${supervisor}"
           },
           "logCount": 200,
           "logFormat": "short",
@@ -374,7 +374,7 @@
     {
       "datasource": {
         "type": "volkovlabs-balenasupervisor-datasource",
-        "uid": "P9E471951A1B4106C"
+        "uid": "${supervisor}"
       },
       "gridPos": {
         "h": 28,
@@ -398,7 +398,7 @@
         {
           "datasource": {
             "type": "volkovlabs-balenasupervisor-datasource",
-            "uid": "P9E471951A1B4106C"
+            "uid": "${supervisor}"
           },
           "logCount": 300,
           "logExclude": "(\\[api\\])|(journalctl)|(Reported)",
@@ -414,7 +414,7 @@
     {
       "datasource": {
         "type": "volkovlabs-balenasupervisor-datasource",
-        "uid": "P9E471951A1B4106C"
+        "uid": "${supervisor}"
       },
       "gridPos": {
         "h": 28,
@@ -428,7 +428,7 @@
         {
           "datasource": {
             "type": "volkovlabs-balenasupervisor-datasource",
-            "uid": "P9E471951A1B4106C"
+            "uid": "${supervisor}"
           },
           "logCount": 200,
           "logFormat": "short",
@@ -446,7 +446,26 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "API",
+          "value": "API"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Supervisor",
+        "multi": false,
+        "name": "supervisor",
+        "options": [],
+        "query": "volkovlabs-balenasupervisor-datasource",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
@@ -458,6 +477,6 @@
   "timezone": "",
   "title": "Balena Supervisor",
   "uid": "cI_2Xn3nk",
-  "version": 2,
+  "version": 6,
   "weekStart": ""
 }
