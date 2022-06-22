@@ -7,7 +7,7 @@
 
 ## Introduction
 
-The Balena Application plugin for Grafana allows to interact with Balena Supervisor API.
+The Balena Application plugin for Grafana allows to display and manage devices using Balena Supervisor API.
 
 ### Requirements
 
@@ -15,11 +15,17 @@ The Balena Application plugin for Grafana allows to interact with Balena Supervi
 
 ## Getting Started
 
-...
+ECharts panel is under development and not included in the Grafana Marketplace yet. It can be installed manually from our private repository or downloaded directly from the GitHub repository:
+
+```bash
+grafana-cli --repo https://volkovlabs.io/plugins plugins install volkovlabs-balena-app
+```
 
 ## Features
 
-- Allows to display device information using Balena Supervisor API.
+- Allows to display device information and service logs using Balena Supervisor API.
+- Provides Services Management panel to start, stop, restart Containers.
+- Allows to Filter Logs using Regex pattern.
 
 ## Feedback
 
