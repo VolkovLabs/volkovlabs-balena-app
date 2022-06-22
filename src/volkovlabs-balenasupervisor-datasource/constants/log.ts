@@ -23,7 +23,7 @@ export const LogUnitOptions: SelectableValue[] = [
   },
   {
     label: 'Balena',
-    description: 'Display logs for Balena containers',
+    description: 'Display logs for Balena services',
     value: LogUnitValue.BALENA,
   },
   {
