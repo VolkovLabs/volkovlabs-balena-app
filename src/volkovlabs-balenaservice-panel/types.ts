@@ -1,7 +1,7 @@
 /**
  * Panel Options
  */
-export interface ContainerOptions {}
+export interface ServiceOptions {}
 
 /**
  * SVG

@@ -20,12 +20,12 @@ import {
 import { ControlMode, ControlModeOptions } from '../../constants';
 import { ContainerIcon, ImageIcon, ReleaseIcon } from '../../icons';
 import { Styles } from '../../styles';
-import { ContainerOptions } from '../../types';
+import { ServiceOptions } from '../../types';
 
 /**
  * Properties
  */
-interface Props extends PanelProps<ContainerOptions> {}
+interface Props extends PanelProps<ServiceOptions> {}
 
 /**
  * State
@@ -53,9 +53,9 @@ interface State {
 }
 
 /**
- * Container Panel
+ * Service Panel
  */
-export class ContainerPanel extends PureComponent<Props, State> {
+export class ServicePanel extends PureComponent<Props, State> {
   datasource: DataSourceApi | null = null;
   refresh = true;
 

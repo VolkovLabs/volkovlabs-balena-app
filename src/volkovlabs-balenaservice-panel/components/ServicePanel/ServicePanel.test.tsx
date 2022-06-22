@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { FieldType, toDataFrame } from '@grafana/data';
 import { RequestTypeValue } from '@volkovlabs/volkovlabs-balenasupervisor-datasource';
-import { ContainerPanel } from './ContainerPanel';
+import { ServicePanel } from './ServicePanel';
 
 /**
  * Panel
@@ -25,7 +25,7 @@ describe('Panel', () => {
 
   it('Should find component', async () => {
     const getComponent = ({ options = {}, ...restProps }: any) => {
-      return <ContainerPanel {...restProps} options={options} />;
+      return <ServicePanel {...restProps} options={options} />;
     };
 
     jest.spyOn(console, 'error').mockImplementation();

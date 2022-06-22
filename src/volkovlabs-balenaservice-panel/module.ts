@@ -1,10 +1,10 @@
 import { PanelPlugin } from '@grafana/data';
-import { ContainerPanel } from './components';
-import { ContainerOptions } from './types';
+import { ServicePanel } from './components';
+import { ServiceOptions } from './types';
 
 /**
  * Panel Plugin
  */
-export const plugin = new PanelPlugin<ContainerOptions>(ContainerPanel).setPanelOptions((builder) => {
+export const plugin = new PanelPlugin<ServiceOptions>(ServicePanel).setPanelOptions((builder) => {
   return builder;
 });
