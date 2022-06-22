@@ -10,4 +10,5 @@ export const defaultQuery: Partial<Query> = {
   logFormat: LogFormatValue.SHORT,
   logUnit: LogUnitValue.BALENA,
   logCount: 200,
+  logExclude: 'journalctl',
 };

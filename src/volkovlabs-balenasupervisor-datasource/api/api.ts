@@ -245,9 +245,17 @@ export class Api {
    * Get Journal Logs Frame
    */
   async getJournalLogsFrame(query: Query): Promise<MutableDataFrame[]> {
-    const logs = await this.getJournalLogs(query.logCount, query.logUnit, query.logFormat);
+    let logs = await this.getJournalLogs(query.logCount, query.logUnit, query.logFormat);
     if (!logs) {
       return [];
+    }
+
+    /**
+     * Exclude
+     */
+    if (query.logExclude) {
+      const exclude = RegExp(query.logExclude);
+      logs = logs.filter((entry) => !exclude.test(entry));
     }
 
     /**
@@ -261,7 +269,7 @@ export class Api {
       },
       fields: [
         { name: 'time', type: FieldType.time },
-        { name: 'content', type: FieldType.string, values: logs },
+        { name: 'content', type: FieldType.string, values: logs.filter((entry) => entry.trim()) },
       ],
     });
 

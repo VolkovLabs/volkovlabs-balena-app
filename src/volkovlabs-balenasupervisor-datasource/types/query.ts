@@ -32,4 +32,11 @@ export interface Query extends DataQuery {
    * @type {number}
    */
   logCount?: number;
+
+  /**
+   * Log Exclude
+   *
+   * @type {string}
+   */
+  logExclude?: string;
 }

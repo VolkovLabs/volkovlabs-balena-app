@@ -10,12 +10,16 @@
       "name": "Volkov Labs",
       "url": "https://volkovlabs.io"
     },
-    "description": "Template to create a new Grafana application plugin",
-    "keywords": ["template"],
+    "description": "The Balena Application plugin for Grafana allows to display and manage devices using Balena Supervisor API.",
+    "keywords": ["balena", "iot"],
     "links": [
       {
         "name": "Website",
         "url": "https://volkovlabs.io"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/VolkovLabs/volkovlabs-balena-app/blob/main/LICENSE"
       }
     ],
     "logos": {

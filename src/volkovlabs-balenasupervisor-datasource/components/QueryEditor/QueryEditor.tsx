@@ -1,7 +1,7 @@
 import { defaults } from 'lodash';
-import React, { PureComponent } from 'react';
+import React, { FormEvent, PureComponent } from 'react';
 import { QueryEditorProps, SelectableValue } from '@grafana/data';
-import { InlineField, InlineFieldRow, Select, Slider } from '@grafana/ui';
+import { InlineField, InlineFieldRow, Input, Select, Slider } from '@grafana/ui';
 import {
   defaultQuery,
   LogFormatOptions,
@@ -51,6 +51,15 @@ export class QueryEditor extends PureComponent<Props> {
   };
 
   /**
+   * Log Exclude change
+   */
+  onLogExcludeChange = async (e: FormEvent<HTMLInputElement>) => {
+    const { onChange, onRunQuery, query } = this.props;
+    onChange({ ...query, logExclude: e.currentTarget.value! });
+    onRunQuery();
+  };
+
+  /**
    * Log Count change
    */
   onLogCountChange = async (value: number) => {
@@ -78,31 +87,39 @@ export class QueryEditor extends PureComponent<Props> {
         </InlineFieldRow>
 
         {query.requestType === RequestTypeValue.LOGS && (
-          <InlineFieldRow>
-            <InlineField label="Format" labelWidth={10} tooltip="Allows to specify custom value">
-              <Select
-                width={40}
-                allowCustomValue
-                options={LogFormatOptions}
-                value={LogFormatOptions.find((format) => format.value === query.logFormat)}
-                onChange={this.onLogFormatChange}
-              />
-            </InlineField>
+          <>
+            <InlineFieldRow>
+              <InlineField label="Format" labelWidth={10} tooltip="Allows to specify custom value">
+                <Select
+                  width={40}
+                  allowCustomValue
+                  options={LogFormatOptions}
+                  value={LogFormatOptions.find((format) => format.value === query.logFormat)}
+                  onChange={this.onLogFormatChange}
+                />
+              </InlineField>
 
-            <InlineField label="Unit" labelWidth={10} tooltip="Allows to specify custom value">
-              <Select
-                width={40}
-                allowCustomValue
-                options={LogUnitOptions}
-                value={LogUnitOptions.find((unit) => unit.value === query.logUnit)}
-                onChange={this.onLogUnitChange}
-              />
-            </InlineField>
+              <InlineField label="Unit" labelWidth={10} tooltip="Allows to specify custom value">
+                <Select
+                  width={40}
+                  allowCustomValue
+                  options={LogUnitOptions}
+                  value={LogUnitOptions.find((unit) => unit.value === query.logUnit)}
+                  onChange={this.onLogUnitChange}
+                />
+              </InlineField>
 
-            <InlineField grow label="Count" labelWidth={10}>
-              <Slider value={query.logCount} min={100} max={2000} onChange={this.onLogCountChange} />
-            </InlineField>
-          </InlineFieldRow>
+              <InlineField grow label="Count" labelWidth={10}>
+                <Slider value={query.logCount} min={100} max={2000} onChange={this.onLogCountChange} />
+              </InlineField>
+            </InlineFieldRow>
+
+            <InlineFieldRow>
+              <InlineField label="Exclude Pattern" labelWidth={20} grow tooltip="Regex format">
+                <Input value={query.logExclude} onChange={this.onLogExcludeChange} />
+              </InlineField>
+            </InlineFieldRow>
+          </>
         )}
       </>
     );
