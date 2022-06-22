@@ -283,6 +283,7 @@ export class ServicePanel extends PureComponent<Props, State> {
                           key="start"
                           name="play"
                           tooltip="Start"
+                          disabled={container.status === 'Running'}
                           onClick={() => {
                             this.onStartService(container);
                           }}
@@ -291,6 +292,7 @@ export class ServicePanel extends PureComponent<Props, State> {
                           key="stop"
                           name="pause"
                           tooltip="Stop"
+                          disabled={container.status !== 'Running'}
                           onClick={() => {
                             this.onStopService(container);
                           }}
