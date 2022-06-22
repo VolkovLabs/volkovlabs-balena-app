@@ -52,7 +52,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
+        "w": 4,
         "x": 0,
         "y": 0
       },
@@ -85,7 +85,7 @@
     },
     {
       "datasource": {
-        "type": "volkovlabs-supervisor-datasource",
+        "type": "volkovlabs-balenasupervisor-datasource",
         "uid": "P9E471951A1B4106C"
       },
       "fieldConfig": {
@@ -108,8 +108,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
-        "x": 5,
+        "w": 6,
+        "x": 4,
         "y": 0
       },
       "id": 4,
@@ -129,7 +129,7 @@
       "targets": [
         {
           "datasource": {
-            "type": "volkovlabs-supervisor-datasource",
+            "type": "volkovlabs-balenasupervisor-datasource",
             "uid": "P9E471951A1B4106C"
           },
           "logCount": 200,
@@ -145,8 +145,8 @@
     },
     {
       "datasource": {
-        "type": "volkovlabs-supervisor-datasource",
-        "uid": "P9E471951A1B4106C"
+        "type": "datasource",
+        "uid": "-- Dashboard --"
       },
       "fieldConfig": {
         "defaults": {
@@ -189,14 +189,11 @@
       "targets": [
         {
           "datasource": {
-            "type": "volkovlabs-supervisor-datasource",
-            "uid": "P9E471951A1B4106C"
+            "type": "datasource",
+            "uid": "-- Dashboard --"
           },
-          "logCount": 200,
-          "logFormat": "short",
-          "logUnit": "balena.service",
-          "refId": "A",
-          "requestType": "device"
+          "panelId": 4,
+          "refId": "A"
         }
       ],
       "title": "Supervisor",
@@ -376,7 +373,7 @@
     },
     {
       "datasource": {
-        "type": "volkovlabs-supervisor-datasource",
+        "type": "volkovlabs-balenasupervisor-datasource",
         "uid": "P9E471951A1B4106C"
       },
       "gridPos": {
@@ -400,9 +397,12 @@
       "targets": [
         {
           "datasource": {
-            "type": "volkovlabs-supervisor-datasource",
+            "type": "volkovlabs-balenasupervisor-datasource",
             "uid": "P9E471951A1B4106C"
           },
+          "logCount": 200,
+          "logFormat": "short",
+          "logUnit": "balena.service",
           "refId": "A",
           "requestType": "logs"
         }
@@ -412,35 +412,8 @@
     },
     {
       "datasource": {
-        "type": "volkovlabs-supervisor-datasource",
+        "type": "volkovlabs-balenasupervisor-datasource",
         "uid": "P9E471951A1B4106C"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "displayMode": "auto",
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
       },
       "gridPos": {
         "h": 28,
@@ -449,32 +422,25 @@
         "y": 3
       },
       "id": 12,
-      "options": {
-        "footer": {
-          "fields": "",
-          "reducer": ["sum"],
-          "show": false
-        },
-        "showHeader": true
-      },
       "pluginVersion": "9.0.0",
       "targets": [
         {
           "datasource": {
-            "type": "volkovlabs-supervisor-datasource",
+            "type": "volkovlabs-balenasupervisor-datasource",
             "uid": "P9E471951A1B4106C"
           },
           "logCount": 200,
           "logFormat": "short",
           "logUnit": "balena.service",
-          "refId": "A",
-          "requestType": "status"
+          "refId": "api",
+          "requestType": "none"
         }
       ],
       "title": "Services",
-      "type": "table"
+      "type": "volkovlabs-balenaservice-panel"
     }
   ],
+  "refresh": "5s",
   "schemaVersion": 36,
   "style": "dark",
   "tags": [],
@@ -486,11 +452,11 @@
     "to": "now"
   },
   "timepicker": {
-    "hidden": true
+    "hidden": false
   },
   "timezone": "",
   "title": "Balena Supervisor",
   "uid": "cI_2Xn3nk",
-  "version": 5,
+  "version": 1,
   "weekStart": ""
 }

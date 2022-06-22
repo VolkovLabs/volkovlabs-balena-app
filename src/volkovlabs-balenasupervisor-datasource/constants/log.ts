@@ -15,7 +15,7 @@ export enum LogUnitValue {
  *
  * @type {SelectableValue[]}
  */
-export const LogUnit: SelectableValue[] = [
+export const LogUnitOptions: SelectableValue[] = [
   {
     label: 'Any',
     description: 'Display logs for all services',
@@ -34,7 +34,7 @@ export const LogUnit: SelectableValue[] = [
   {
     label: 'Supervisor',
     description: 'Display logs for Supervisor',
-    value: LogUnitValue.BALENA,
+    value: LogUnitValue.SUPERVISOR,
   },
 ];
 
@@ -53,7 +53,7 @@ export enum LogFormatValue {
  *
  * @type {SelectableValue[]}
  */
-export const LogFormat: SelectableValue[] = [
+export const LogFormatOptions: SelectableValue[] = [
   {
     label: 'Cat',
     description:

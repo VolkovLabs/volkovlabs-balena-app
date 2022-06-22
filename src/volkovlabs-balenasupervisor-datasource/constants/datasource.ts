@@ -1,7 +1,7 @@
 /**
  * API Data Source
  */
-export const SupervisorAPIDataSource = 'supervisor';
+export const SupervisorAPIDataSource = 'api';
 
 /**
  * Datasource test status

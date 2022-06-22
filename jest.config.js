@@ -9,4 +9,7 @@ module.exports = {
   ...standard.jestConfig(),
   collectCoverage: true,
   coveragePathIgnorePatterns: ['src/icons'],
+  moduleNameMapper: {
+    "^@volkovlabs(.*)$": "<rootDir>/src$1",
+  },
 };

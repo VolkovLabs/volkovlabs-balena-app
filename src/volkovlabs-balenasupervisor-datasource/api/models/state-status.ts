@@ -26,6 +26,13 @@ export interface StateStatus {
   release: string;
 
   /**
+   * Download Progress
+   *
+   * @type {number}
+   */
+  overallDownloadProgress: number;
+
+  /**
    * Containers
    *
    * @type {ServiceContainer[]}
