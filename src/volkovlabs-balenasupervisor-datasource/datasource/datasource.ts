@@ -79,7 +79,7 @@ export class DataSource extends DataSourceApi<Query, DataSourceOptions> {
    */
   async testDatasource() {
     /**
-     * Get Models
+     * Check Ping
      */
     const isStatusOk = await this.api.checkPing();
 

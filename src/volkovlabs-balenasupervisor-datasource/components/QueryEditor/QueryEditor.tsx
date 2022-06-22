@@ -4,9 +4,9 @@ import { QueryEditorProps, SelectableValue } from '@grafana/data';
 import { InlineField, InlineFieldRow, Select, Slider } from '@grafana/ui';
 import {
   defaultQuery,
-  LogFormat,
+  LogFormatOptions,
   LogFormatValue,
-  LogUnit,
+  LogUnitOptions,
   LogUnitValue,
   RequestType,
   RequestTypeValue,
@@ -83,8 +83,8 @@ export class QueryEditor extends PureComponent<Props> {
               <Select
                 width={40}
                 allowCustomValue
-                options={LogFormat}
-                value={LogFormat.find((format) => format.value === query.logFormat)}
+                options={LogFormatOptions}
+                value={LogFormatOptions.find((format) => format.value === query.logFormat)}
                 onChange={this.onLogFormatChange}
               />
             </InlineField>
@@ -93,8 +93,8 @@ export class QueryEditor extends PureComponent<Props> {
               <Select
                 width={40}
                 allowCustomValue
-                options={LogUnit}
-                value={LogUnit.find((unit) => unit.value === query.logUnit)}
+                options={LogUnitOptions}
+                value={LogUnitOptions.find((unit) => unit.value === query.logUnit)}
                 onChange={this.onLogUnitChange}
               />
             </InlineField>

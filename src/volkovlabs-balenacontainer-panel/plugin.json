@@ -1,0 +1,16 @@
+{
+  "id": "volkovlabs-balenacontainer-panel",
+  "info": {
+    "author": {
+      "name": "Volkov Labs",
+      "url": "https://volkovlabs.io"
+    },
+    "description": "Container Management",
+    "logos": {
+      "large": "img/logo.svg",
+      "small": "img/logo.svg"
+    }
+  },
+  "name": "Balena Container",
+  "type": "panel"
+}

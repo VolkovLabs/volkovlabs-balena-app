@@ -267,4 +267,117 @@ export class Api {
 
     return [frame];
   }
+
+  /**
+   * Start Service
+   */
+  async startApplicationService(appId: number, serviceName: string): Promise<boolean> {
+    const response = await lastValueFrom(
+      getBackendSrv().fetch({
+        url: `${this.instanceSettings.url}/v2/applications/${appId}/start-service`,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: JSON.stringify({ serviceName }),
+      })
+    ).catch(function (e) {
+      console.error(e.statusText);
+    });
+
+    /**
+     * Check Response
+     */
+    if (!response || !response.data) {
+      console.error('Start Application Service: API request failed', response);
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Stop Service
+   */
+  async stopApplicationService(appId: number, serviceName: string): Promise<boolean> {
+    const response = await lastValueFrom(
+      getBackendSrv().fetch({
+        url: `${this.instanceSettings.url}/v2/applications/${appId}/stop-service`,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: JSON.stringify({ serviceName }),
+      })
+    ).catch(function (e) {
+      console.error(e.statusText);
+    });
+
+    /**
+     * Check Response
+     */
+    if (!response || !response.data) {
+      console.error('Stop Application Service: API request failed', response);
+      return false;
+    }
+
+    console.log(response);
+
+    return true;
+  }
+
+  /**
+   * Restart Service
+   */
+  async restartApplicationService(appId: number, serviceName: string): Promise<boolean> {
+    const response = await lastValueFrom(
+      getBackendSrv().fetch({
+        url: `${this.instanceSettings.url}/v2/applications/${appId}/restart-service`,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: JSON.stringify({ serviceName }),
+      })
+    ).catch(function (e) {
+      console.error(e.statusText);
+    });
+
+    /**
+     * Check Response
+     */
+    if (!response || !response.data) {
+      console.error('Restart Application Service: API request failed', response);
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Restart All Services
+   */
+  async restartApplicationServices(appId: number): Promise<boolean> {
+    const response = await lastValueFrom(
+      getBackendSrv().fetch({
+        url: `${this.instanceSettings.url}/v2/applications/${appId}/restart`,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+    ).catch(function (e) {
+      console.error(e.statusText);
+    });
+
+    /**
+     * Check Response
+     */
+    if (!response || !response.data) {
+      console.error('Restart Application Services: API request failed', response);
+      return false;
+    }
+
+    return true;
+  }
 }
