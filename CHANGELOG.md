@@ -1,7 +1,12 @@
 # Change Log
 
-## 1.0.0 (IN PROGRESS)
+## 1.0.0 (2022-06-22)
 
 ### Features / Enhancements
 
 - Initial release based on Abc Template Application 2.0.0
+- Add Balena Supervisor API (#1)
+- Add Logs API (#2)
+- Add Service Management Panel (#3)
+- Add Log Exclude Regex Pattern (#4)
+- Add State Drawer (#5)

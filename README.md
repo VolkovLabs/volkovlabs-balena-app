@@ -9,7 +9,7 @@
 
 ## Introduction
 
-The Balena Application plugin for Grafana allows to display and manage devices using Balena Supervisor API.
+The Balena Application plugin for Grafana allows to display device information and manage services using Balena Supervisor API.
 
 ### Requirements
 
@@ -25,9 +25,27 @@ grafana-cli --repo https://volkovlabs.io/plugins plugins install volkovlabs-bale
 
 ## Features
 
-- Allows to display device information and service logs using Balena Supervisor API.
+- Allows to display device, release information and service logs using Balena Supervisor API.
 - Provides Services Management panel to start, stop, restart Containers.
-- Allows to Filter Logs using Regex pattern.
+- Allows to filter Logs using Regex pattern.
+- Requires Confirmation to restart all Services and reboot the device.
+
+## Provisioning
+
+Grafana supports managing data sources by adding one or more YAML config files in the `provisioning/datasources` folder.
+
+Example of provisioning the Balena Supervisor Data Source.
+
+```yaml
+datasources:
+  - name: API
+    type: volkovlabs-balenasupervisor-datasource
+    uid: P9E471951A1B4106C
+    jsonData:
+      url: ${BALENA_SUPERVISOR_ADDRESS}
+    secureJsonData:
+      apiKey: ${BALENA_SUPERVISOR_API_KEY}
+```
 
 ## Feedback
 
