@@ -60,6 +60,11 @@ interface State {
   restartAppId: number;
 
   /**
+   * Reboot Device
+   */
+  reboot: boolean;
+
+  /**
    * State Drawer
    */
   stateDrawer: boolean;
@@ -90,6 +95,7 @@ export class ServicePanel extends PureComponent<Props, State> {
       loading: 'Loading...',
       restartAppId: 0,
       stateDrawer: false,
+      reboot: false,
     };
   }
 
@@ -200,6 +206,20 @@ export class ServicePanel extends PureComponent<Props, State> {
   };
 
   /**
+   * Reboot Device
+   */
+  onRebootDevice = async () => {
+    if (!this.datasource || !this.datasource.api) {
+      return;
+    }
+
+    /**
+     * Restart
+     */
+    await this.datasource.api.rebootDevice();
+  };
+
+  /**
    * Change control mode
    */
   onChangeMode = async (event: ControlMode) => {
@@ -251,6 +271,18 @@ export class ServicePanel extends PureComponent<Props, State> {
               variant="destructive"
             >
               Restart services
+            </Button>
+          )}
+
+          {this.state.mode === ControlMode.DEVICE && this.state.stateStatus?.release && (
+            <Button
+              onClick={() => {
+                this.setState({ reboot: true });
+              }}
+              icon="sync"
+              variant="destructive"
+            >
+              Reboot
             </Button>
           )}
         </div>
@@ -398,6 +430,19 @@ export class ServicePanel extends PureComponent<Props, State> {
             this.setState({ restartAppId: 0 });
           }}
           onDismiss={() => this.setState({ restartAppId: 0 })}
+        />
+
+        <ConfirmModal
+          isOpen={!!this.state.reboot}
+          title="Reboot Device"
+          body={'Please confirm to reboot'}
+          confirmText="Confirm"
+          icon="exclamation-triangle"
+          onConfirm={() => {
+            this.onRebootDevice();
+            this.setState({ reboot: false });
+          }}
+          onDismiss={() => this.setState({ reboot: false })}
         />
 
         {this.state.stateDrawer && this.state.targetState && (

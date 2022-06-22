@@ -422,4 +422,31 @@ export class Api {
 
     return targetState;
   }
+
+  /**
+   * Reboot Device
+   */
+  async rebootDevice(): Promise<boolean> {
+    const response = await lastValueFrom(
+      getBackendSrv().fetch({
+        url: `${this.instanceSettings.url}/v1/reboot`,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+    ).catch(function (e) {
+      console.error(e.statusText);
+    });
+
+    /**
+     * Check Response
+     */
+    if (!response || !response.data) {
+      console.error('Reboot Device: API request failed', response);
+      return false;
+    }
+
+    return true;
+  }
 }
