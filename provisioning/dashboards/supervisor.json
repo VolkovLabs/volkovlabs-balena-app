@@ -437,7 +437,7 @@
         }
       ],
       "title": "Services",
-      "type": "volkovlabs-balenacontainer-panel"
+      "type": "volkovlabs-balenaservice-panel"
     }
   ],
   "refresh": "5s",
