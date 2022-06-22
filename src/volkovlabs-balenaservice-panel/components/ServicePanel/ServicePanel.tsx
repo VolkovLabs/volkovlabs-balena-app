@@ -17,11 +17,13 @@ import {
   ServiceContainer,
   StateStatus,
   SupervisorAPIDataSource,
+  TargetState,
 } from '../../../volkovlabs-balenasupervisor-datasource';
 import { ControlMode, ControlModeOptions } from '../../constants';
 import { ContainerIcon, ImageIcon, ReleaseIcon } from '../../icons';
 import { Styles } from '../../styles';
 import { ServiceOptions } from '../../types';
+import { StateDrawer } from '../StateDrawer';
 
 /**
  * Properties
@@ -43,6 +45,11 @@ interface State {
   stateStatus: StateStatus | null;
 
   /**
+   * State Status
+   */
+  targetState: TargetState | null;
+
+  /**
    * Loading message
    */
   loading: string;
@@ -51,6 +58,11 @@ interface State {
    * Application Id to Restart
    */
   restartAppId: number;
+
+  /**
+   * State Drawer
+   */
+  stateDrawer: boolean;
 }
 
 /**
@@ -74,18 +86,17 @@ export class ServicePanel extends PureComponent<Props, State> {
     this.state = {
       mode: ControlMode.CONTAINER,
       stateStatus: null,
+      targetState: null,
       loading: 'Loading...',
       restartAppId: 0,
+      stateDrawer: false,
     };
   }
 
   /**
-   * Mount
+   * State Status Refresh
    */
   async getStateStatus() {
-    /**
-     * Refresh
-     */
     setTimeout(async () => {
       if (!this.refresh) {
         return;
@@ -117,6 +128,12 @@ export class ServicePanel extends PureComponent<Props, State> {
     }
 
     this.getStateStatus();
+
+    /**
+     * Target State
+     */
+    const targetState = await this.datasource.api.getTargetState();
+    this.setState({ targetState });
   }
 
   /**
@@ -231,7 +248,7 @@ export class ServicePanel extends PureComponent<Props, State> {
                 this.setState({ restartAppId: this.state.stateStatus?.containers[0].appId || 0 });
               }}
               icon="sync"
-              variant="secondary"
+              variant="destructive"
             >
               Restart services
             </Button>
@@ -351,6 +368,19 @@ export class ServicePanel extends PureComponent<Props, State> {
                 }`,
               ]}
             </Card.Meta>
+            <Card.Actions>
+              {this.state.targetState && (
+                <Button
+                  onClick={() => {
+                    this.setState({ stateDrawer: true });
+                  }}
+                  icon="layer-group"
+                  variant="secondary"
+                >
+                  Target State
+                </Button>
+              )}
+            </Card.Actions>
             <Card.Tags>
               <TagList tags={[this.state.stateStatus.appState]} />
             </Card.Tags>
@@ -369,6 +399,15 @@ export class ServicePanel extends PureComponent<Props, State> {
           }}
           onDismiss={() => this.setState({ restartAppId: 0 })}
         />
+
+        {this.state.stateDrawer && this.state.targetState && (
+          <StateDrawer
+            targetState={this.state.targetState}
+            onClose={() => {
+              this.setState({ stateDrawer: false });
+            }}
+          ></StateDrawer>
+        )}
       </div>
     );
   }

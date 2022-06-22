@@ -1,7 +1,5 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { FieldType, toDataFrame } from '@grafana/data';
-import { RequestTypeValue } from '@volkovlabs/volkovlabs-balenasupervisor-datasource';
 import { ServicePanel } from './ServicePanel';
 
 /**
@@ -9,18 +7,7 @@ import { ServicePanel } from './ServicePanel';
  */
 describe('Panel', () => {
   const data = {
-    series: [
-      toDataFrame({
-        name: RequestTypeValue.STATE_STATUS,
-        fields: [
-          {
-            type: FieldType.string,
-            name: 'Name',
-            values: ['grafana', 'api'],
-          },
-        ],
-      }),
-    ],
+    series: [],
   };
 
   it('Should find component', async () => {
