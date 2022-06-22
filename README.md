@@ -15,7 +15,7 @@ The Balena Application plugin for Grafana allows to display and manage devices u
 
 ## Getting Started
 
-ECharts panel is under development and not included in the Grafana Marketplace yet. It can be installed manually from our private repository or downloaded directly from the GitHub repository:
+The Balena application is under development and not included in the Grafana Marketplace yet. It can be installed manually from our private repository or downloaded directly from the GitHub repository:
 
 ```bash
 grafana-cli --repo https://volkovlabs.io/plugins plugins install volkovlabs-balena-app
