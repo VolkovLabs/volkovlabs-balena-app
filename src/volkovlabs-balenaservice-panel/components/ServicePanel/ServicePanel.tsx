@@ -16,6 +16,7 @@ import {
   getSupervisorDatasource,
   ServiceContainer,
   StateStatus,
+  SupervisorAPIDataSource,
 } from '../../../volkovlabs-balenasupervisor-datasource';
 import { ControlMode, ControlModeOptions } from '../../constants';
 import { ContainerIcon, ImageIcon, ReleaseIcon } from '../../icons';
@@ -111,7 +112,7 @@ export class ServicePanel extends PureComponent<Props, State> {
      * API
      */
     if (!this.datasource || !this.datasource.api) {
-      console.error('Data Source is not defined');
+      console.error(`Data Source '${SupervisorAPIDataSource}' is not defined`);
       return;
     }
 
@@ -130,7 +131,6 @@ export class ServicePanel extends PureComponent<Props, State> {
    */
   onStartService = async (container: ServiceContainer) => {
     if (!this.datasource || !this.datasource.api) {
-      console.error('Data Source is not defined');
       return;
     }
 
@@ -145,7 +145,6 @@ export class ServicePanel extends PureComponent<Props, State> {
    */
   onStopService = async (container: ServiceContainer) => {
     if (!this.datasource || !this.datasource.api) {
-      console.error('Data Source is not defined');
       return;
     }
 
@@ -160,7 +159,6 @@ export class ServicePanel extends PureComponent<Props, State> {
    */
   onRestartService = async (container: ServiceContainer) => {
     if (!this.datasource || !this.datasource.api) {
-      console.error('Data Source is not defined');
       return;
     }
 
@@ -175,7 +173,6 @@ export class ServicePanel extends PureComponent<Props, State> {
    */
   onRestartAllServices = async (appId: number) => {
     if (!this.datasource || !this.datasource.api) {
-      console.error('Data Source is not defined');
       return;
     }
 
