@@ -400,7 +400,8 @@
             "type": "volkovlabs-balenasupervisor-datasource",
             "uid": "P9E471951A1B4106C"
           },
-          "logCount": 200,
+          "logCount": 300,
+          "logExclude": "(\\[api\\])|(journalctl)|(Reported)",
           "logFormat": "short",
           "logUnit": "balena.service",
           "refId": "A",
@@ -457,6 +458,6 @@
   "timezone": "",
   "title": "Balena Supervisor",
   "uid": "cI_2Xn3nk",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
