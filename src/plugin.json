@@ -26,7 +26,12 @@
       "large": "img/logo.svg",
       "small": "img/logo.svg"
     },
-    "screenshots": [],
+    "screenshots": [
+      {
+        "name": "Application",
+        "path": "img/app.png"
+      }
+    ],
     "updated": "%TODAY%",
     "version": "%VERSION%"
   },
