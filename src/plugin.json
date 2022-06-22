@@ -39,6 +39,13 @@
       "path": "/d/cI_2Xn3nk/",
       "role": "Viewer",
       "type": "page"
+    },
+    {
+      "addToNav": false,
+      "name": "Balena Supervisor",
+      "path": "dashboards/supervisor.json",
+      "role": "Viewer",
+      "type": "dashboard"
     }
   ],
   "name": "Balena Application",

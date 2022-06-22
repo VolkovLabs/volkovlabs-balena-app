@@ -4,7 +4,7 @@ import { getBackendSrv } from '@grafana/runtime';
 import { defaultQuery, RequestTypeValue } from '../constants';
 import { DataSourceOptions, Query } from '../types';
 import { parseJSONToCamelCase } from '../utils';
-import { Device, StateStatus } from './models';
+import { Device, StateStatus, TargetState } from './models';
 
 /**
  * API
@@ -134,7 +134,7 @@ export class Api {
     }
 
     /**
-     * Check Host Config
+     * Check State Status
      */
     const stateStatus = response.data as StateStatus;
     if (!stateStatus) {
@@ -387,5 +387,39 @@ export class Api {
     }
 
     return true;
+  }
+
+  /**
+   * Get Target Status
+   */
+  async getTargetState(): Promise<TargetState | null> {
+    const response = await lastValueFrom(
+      getBackendSrv().fetch({
+        method: 'GET',
+        url: `${this.instanceSettings.url}/v2/local/target-state`,
+        responseType: 'json',
+      })
+    ).catch(function (e) {
+      console.error(e.statusText);
+    });
+
+    /**
+     * Check Response
+     */
+    if (!response || !response.data) {
+      console.error('Get Target State: API Request failed', response);
+      return null;
+    }
+
+    /**
+     * Check Target State
+     */
+    const targetState = response.data as TargetState;
+    if (!targetState) {
+      console.log('Target State is not found');
+      return null;
+    }
+
+    return targetState;
   }
 }
