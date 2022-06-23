@@ -30,6 +30,12 @@ grafana-cli --repo https://volkovlabs.io/plugins plugins install volkovlabs-bale
 - Allows to filter Logs using Regex pattern.
 - Requires Confirmation to restart all Services and reboot the device.
 
+## Balena Supervisor
+
+The balena Supervisor is balena's agent that runs on devices. Its main role is to ensure your app is running, and keep communications with the balenaCloud API server.
+
+The Supervisor has its own [set of APIs](https://www.balena.io/docs/reference/supervisor/supervisor-api/) providing means for services to communicate and execute some special actions that affect the host OS or the services itself.
+
 ## Provisioning
 
 Grafana supports managing data sources by adding one or more YAML config files in the `provisioning/datasources` folder.
