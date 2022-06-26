@@ -4,7 +4,8 @@
 
 ### Features / Enhancements
 
--
+- Add Balena Supervisor to README (#12)
+- Set Supervisor Dashboard as Home and update Logs panel (#13)
 
 ## 1.0.0 (2022-06-22)
 

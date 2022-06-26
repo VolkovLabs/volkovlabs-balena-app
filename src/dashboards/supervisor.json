@@ -390,8 +390,8 @@
         "showCommonLabels": false,
         "showLabels": false,
         "showTime": false,
-        "sortOrder": "Descending",
-        "wrapLogMessage": false
+        "sortOrder": "Ascending",
+        "wrapLogMessage": true
       },
       "pluginVersion": "9.0.0",
       "targets": [

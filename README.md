@@ -26,7 +26,7 @@ grafana-cli --repo https://volkovlabs.io/plugins plugins install volkovlabs-bale
 ## Features
 
 - Allows to display device, release information and service logs using Balena Supervisor API.
-- Provides Services Management panel to start, stop, restart Containers.
+- Provides Services panel to start, stop, restart Containers.
 - Allows to filter Logs using Regex pattern.
 - Requires Confirmation to restart all Services and reboot the device.
 
