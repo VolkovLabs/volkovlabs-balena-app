@@ -6,6 +6,7 @@
 
 - Add Balena Supervisor to README (#12)
 - Set Supervisor Dashboard as Home and update Logs panel (#13)
+- Fix LGTM Potentially inconsistent state update (#14)
 
 ## 1.0.0 (2022-06-22)
 

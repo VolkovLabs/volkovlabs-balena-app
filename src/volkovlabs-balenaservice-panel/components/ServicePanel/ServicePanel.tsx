@@ -265,7 +265,7 @@ export class ServicePanel extends PureComponent<Props, State> {
           {this.state.mode === ControlMode.CONTAINER && this.state.stateStatus?.containers.length && (
             <Button
               onClick={() => {
-                this.setState({ restartAppId: this.state.stateStatus?.containers[0].appId || 0 });
+                this.setState((prevState) => ({ restartAppId: this.state.stateStatus?.containers[0].appId || 0 }));
               }}
               icon="sync"
               variant="destructive"
