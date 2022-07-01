@@ -6,17 +6,6 @@ FROM grafana/grafana:${GRAFANA_VERSION}
 ENV GF_ENABLE_GZIP=true
 ENV GF_USERS_DEFAULT_THEME=light
 
-# Authentication
-ENV GF_AUTH_ANONYMOUS_ENABLED=true
-ENV GF_AUTH_BASIC_ENABLED=false
-
-# Explore
-ENV GF_EXPLORE_ENABLED=false
-
-# Alerting
-ENV GF_ALERTING_ENABLED=false
-ENV GF_UNIFIED_ALERTING_ENABLED=false
-
 # Home Dashboard
 ENV GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/plugins/volkovlabs-balena-app/dashboards/supervisor.json
 
