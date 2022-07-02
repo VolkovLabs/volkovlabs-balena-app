@@ -12,8 +12,6 @@ services:
       io.balena.features.supervisor-api: '1'
     volumes:
       - grafana-data:/var/lib/grafana
-    depends_on:
-      - postgres
 
 volumes:
   grafana-data:
