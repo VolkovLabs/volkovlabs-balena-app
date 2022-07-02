@@ -7,6 +7,10 @@
 - Add Balena Supervisor to README (#12)
 - Set Supervisor Dashboard as Home and update Logs panel (#13)
 - Fix LGTM Potentially inconsistent state update (#14)
+- Add Docker workflow and update Icons (#18)
+- Fix Docker permissions (#19)
+- Add Balena Block and update Icons (#20)
+- Update Docker Compose for Balena (#21)
 
 ## 1.0.0 (2022-06-22)
 
