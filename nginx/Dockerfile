@@ -1,8 +1,6 @@
 FROM nginx:stable-alpine
 
 ## Environment
-ENV API_HOST=localhost
-ENV API_PORT=3001
 ENV GRAFANA_HOST=localhost
 ENV GRAFANA_PORT=3000
 ENV GRAFANA_SSL=/C=US/ST=Florida/L=Tampa/O=Volkov Labs/OU=Technology/CN=localhost/
