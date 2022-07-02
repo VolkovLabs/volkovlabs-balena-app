@@ -2,9 +2,6 @@ version: '2.1'
 
 services:
   grafana:
-    build:
-      context: ./
-      dockerfile: Dockerfile
     image: ghcr.io/volkovlabs/balena-app:latest
     network_mode: host
     restart: always
