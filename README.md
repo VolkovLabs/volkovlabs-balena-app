@@ -33,8 +33,7 @@ To add to your `docker-compose.yml`:
 
 ```yaml
 version: '2.1'
-volumes:
-  grafana-data:
+
 services:
   grafana:
     image: ghcr.io/volkovlabs/balena-app:latest
@@ -44,6 +43,9 @@ services:
       io.balena.features.supervisor-api: '1'
     volumes:
       - grafana-data:/var/lib/grafana
+
+volumes:
+  grafana-data:
 ```
 
 Default Grafana username and password is **admin/admin**.
