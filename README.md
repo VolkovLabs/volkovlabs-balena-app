@@ -23,10 +23,37 @@ The Balena application is under development and not included in the Grafana Mark
 grafana-cli --repo https://volkovlabs.io/plugins plugins install volkovlabs-balena-app
 ```
 
+## Balena
+
+Our custom Grafana build with the Balena Application plugin can be deployed directly to balenaCloud:
+
+[![Deploy with balena](https://balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/volkovlabs/volkovlabs-balena-app)
+
+To add to your `docker-compose.yml`:
+
+```yaml
+version: '2.1'
+volumes:
+  grafana-data:
+services:
+  grafana:
+    image: ghcr.io/volkovlabs/balena-app:latest
+    network_mode: host
+    restart: always
+    labels:
+      io.balena.features.supervisor-api: '1'
+    volumes:
+      - grafana-data:/var/lib/grafana
+```
+
+Default Grafana username and password is **admin/admin**.
+
+You can learn more about balena Labels in the [Documentation](https://www.balena.io/docs/reference/supervisor/docker-compose/#labels).
+
 ## Features
 
 - Allows to display device, release information and service logs using Balena Supervisor API.
-- Provides Services panel to start, stop, restart Containers.
+- Provides Services Panel to start, stop, restart Containers.
 - Allows to filter Logs using Regex pattern.
 - Requires Confirmation to restart all Services and reboot the device.
 

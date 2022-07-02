@@ -1,0 +1,21 @@
+name: balena-app
+description: >-
+  The Balena Application plugin for Grafana allows to display device information and manage services using Balena Supervisor API.
+version: 1.1.0
+type: sw.block
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://https://github.com/VolkovLabs/volkovlabs-balena-app'
+  logo:
+    type: blob.asset
+    data:
+      url: 'https://raw.githubusercontent.com/VolkovLabs/volkovlabs-balena-app/main/img/block.png'
+data:
+  defaultDeviceType: raspberrypi4-64
+supportedDeviceTypes:
+  - raspberrypi4-64
+  - intel-nuc
+  - jetson-nano
+  - genericx86-64-ext
