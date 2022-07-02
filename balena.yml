@@ -1,7 +1,19 @@
 name: balena-app
 description: >-
   The Balena Application plugin for Grafana allows to display device information and manage services using Balena Supervisor API.
-version: 1.1.0
+post-provisioning: >-
+  [![balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
+  ## Usage instructions
+  Include this snippet in your docker-compose.yml file under 'services':
+    
+    ```
+  grafana:
+    image: bh.cr/volkovlabs/balena-app
+    network_mode: host
+    restart: always
+    labels:
+      io.balena.features.supervisor-api: "1"
+    ```
 type: sw.block
 assets:
   repository:

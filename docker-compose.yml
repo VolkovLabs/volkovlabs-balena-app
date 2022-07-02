@@ -10,14 +10,5 @@ services:
     volumes:
       - grafana-data:/var/lib/grafana
 
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    network_mode: host
-    restart: always
-    depends_on:
-      - grafana
-
 volumes:
   grafana-data:
