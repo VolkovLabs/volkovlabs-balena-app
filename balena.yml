@@ -1,20 +1,20 @@
 name: balena-app
+version: 1.1.0
+joinable: false
+type: sw.application
 description: >-
   The Balena Application plugin for Grafana allows to display device information and manage services using Balena Supervisor API.
 post-provisioning: >-
   [![balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
-  ## Usage instructions
-  Include this snippet in your docker-compose.yml file under 'services':
-    
-    ```
-  grafana:
-    image: bh.cr/volkovlabs/balena-app
-    network_mode: host
-    restart: always
-    labels:
-      io.balena.features.supervisor-api: "1"
-    ```
-type: sw.block
+
+  Default Grafana username and password is **admin/admin**.
+
+  ## Features
+
+    - Allows to display device, release information and service logs using Balena Supervisor API.
+    - Provides Services Panel to start, stop, restart Containers.
+    - Allows to filter Logs using Regex pattern.
+    - Requires Confirmation to restart all Services and reboot the device.
 assets:
   repository:
     type: blob.asset
