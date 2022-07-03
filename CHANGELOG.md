@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1.0 (IN PROGRESS)
+## 1.1.0 (2022-07-02)
 
 ### Features / Enhancements
 
@@ -11,6 +11,10 @@
 - Fix Docker permissions (#19)
 - Add Balena Block and update Icons (#20)
 - Update Docker Compose for Balena (#21)
+- Update Balena configuration (#22)
+- Add NGINX for Balena (#23)
+- Add Balena Workflow (#24)
+- Update Block to Project (Application) (#25)
 
 ## 1.0.0 (2022-06-22)
 
