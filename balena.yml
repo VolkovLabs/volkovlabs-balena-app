@@ -5,11 +5,13 @@ type: sw.application
 description: >-
   The Balena Application plugin for Grafana allows to display device information and manage services using Balena Supervisor API.
 post-provisioning: >-
-  [![balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
-
   ## Introduction
 
   The Balena Application plugin for Grafana allows to display device information and manage services using Balena Supervisor API.
+
+  ![Application](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/src/img/app.png)
+
+  [![Grafana 9](https://img.shields.io/badge/Grafana-9-orange)](https://www.grafana.com) [![Balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
 
   Default Grafana username and password is **admin/admin**.
 
@@ -32,6 +34,5 @@ data:
   defaultDeviceType: raspberrypi4-64
   supportedDeviceTypes:
     - raspberrypi4-64
-    - intel-nuc
-    - jetson-nano
+    - jetson-xavier
     - genericx86-64-ext
