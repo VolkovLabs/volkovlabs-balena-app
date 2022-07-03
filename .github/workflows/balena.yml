@@ -1,4 +1,4 @@
-name: Balena Block
+name: Balena
 
 on:
   push:
