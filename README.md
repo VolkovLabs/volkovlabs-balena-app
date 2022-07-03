@@ -24,13 +24,13 @@ The Balena application is under development and not included in the Grafana Mark
 grafana-cli --repo https://volkovlabs.io/plugins plugins install volkovlabs-balena-app
 ```
 
-## Balena
+## balenaCloud
 
 Our custom Grafana build with the Balena Application plugin can be deployed directly to balenaCloud:
 
 [![Deploy with balena](https://balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/volkovlabs/volkovlabs-balena-app)
 
-To add to your `docker-compose.yml`:
+We recommend to add it to your `docker-compose.yml` together with NGINX reverse proxy (example configuration in the repository):
 
 ```yaml
 version: '2.1'
@@ -44,6 +44,15 @@ services:
       io.balena.features.supervisor-api: '1'
     volumes:
       - grafana-data:/var/lib/grafana
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    network_mode: host
+    restart: always
+    depends_on:
+      - grafana
 
 volumes:
   grafana-data:
