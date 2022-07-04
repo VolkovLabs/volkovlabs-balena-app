@@ -13,11 +13,18 @@ describe('plugin', () => {
     /**
      * Builder
      */
-    const builder: any = {};
+    const builder: any = {
+      addSliderInput: jest.fn().mockImplementation(() => builder),
+    };
 
     /**
      * Supplier
      */
     plugin['optionsSupplier'](builder);
+
+    /**
+     * Inputs
+     */
+    expect(builder.addSliderInput).toHaveBeenCalled();
   });
 });

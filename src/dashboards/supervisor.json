@@ -24,6 +24,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 1,
+  "iteration": 1656974900438,
   "links": [],
   "liveNow": true,
   "panels": [
@@ -69,7 +71,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -125,7 +127,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -185,7 +187,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -252,7 +254,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -357,7 +359,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -423,6 +425,9 @@
         "y": 3
       },
       "id": 12,
+      "options": {
+        "refresh": 3000
+      },
       "pluginVersion": "9.0.0",
       "targets": [
         {
@@ -477,6 +482,6 @@
   "timezone": "",
   "title": "Balena Supervisor",
   "uid": "cI_2Xn3nk",
-  "version": 6,
+  "version": 1,
   "weekStart": ""
 }
