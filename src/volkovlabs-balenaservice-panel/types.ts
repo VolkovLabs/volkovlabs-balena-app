@@ -1,7 +1,14 @@
 /**
  * Panel Options
  */
-export interface ServiceOptions {}
+export interface ServiceOptions {
+  /**
+   * Refresh
+   *
+   * @type {number}
+   */
+  refresh: number;
+}
 
 /**
  * SVG

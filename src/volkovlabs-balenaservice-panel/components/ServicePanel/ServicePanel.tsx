@@ -113,10 +113,15 @@ export class ServicePanel extends PureComponent<Props, State> {
         return;
       }
 
+      /**
+       * Target State
+       */
       const stateStatus = await this.datasource.api.getStateStatus();
-      this.setState({ stateStatus, loading: '' });
+      const targetState = await this.datasource.api.getTargetState();
+      this.setState({ targetState, stateStatus, loading: '' });
+
       this.getStateStatus();
-    }, 1000);
+    }, this.props.options.refresh);
   }
 
   /**
@@ -133,13 +138,17 @@ export class ServicePanel extends PureComponent<Props, State> {
       return;
     }
 
-    this.getStateStatus();
-
     /**
      * Target State
      */
+    const stateStatus = await this.datasource.api.getStateStatus();
     const targetState = await this.datasource.api.getTargetState();
-    this.setState({ targetState });
+    this.setState({ targetState, stateStatus, loading: '' });
+
+    /**
+     * Timeout
+     */
+    this.getStateStatus();
   }
 
   /**
