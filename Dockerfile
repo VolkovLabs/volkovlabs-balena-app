@@ -1,6 +1,4 @@
-ARG GRAFANA_VERSION="9.0.2"
-
-FROM grafana/grafana:${GRAFANA_VERSION}
+FROM grafana/grafana:9.0.3
 
 # Set Grafana options
 ENV GF_ENABLE_GZIP=true
