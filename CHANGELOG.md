@@ -8,6 +8,10 @@
 - Add Refresh Option to Service panel to adjust update interval (#14)
 - Upgrade to Grafana 9.0.3 (#31)
 
+### Bug fixes
+
+- Balena Dashboard is not loading #32
+
 ## 1.1.0 (2022-07-02)
 
 ### Features / Enhancements

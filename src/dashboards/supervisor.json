@@ -1,4 +1,38 @@
 {
+  "__inputs": [],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.0.3"
+    },
+    {
+      "type": "panel",
+      "id": "logs",
+      "name": "Logs",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "volkovlabs-balenaservice-panel",
+      "name": "Balena Services",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "volkovlabs-balenasupervisor-datasource",
+      "name": "Balena Supervisor",
+      "version": "%VERSION%"
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -24,8 +58,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1656974900438,
+  "id": null,
+  "iteration": 1658799324349,
   "links": [],
   "liveNow": true,
   "panels": [
@@ -71,7 +105,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.2",
+      "pluginVersion": "9.0.3",
       "targets": [
         {
           "datasource": {
@@ -127,7 +161,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.2",
+      "pluginVersion": "9.0.3",
       "targets": [
         {
           "datasource": {
@@ -187,7 +221,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.2",
+      "pluginVersion": "9.0.3",
       "targets": [
         {
           "datasource": {
@@ -254,7 +288,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.2",
+      "pluginVersion": "9.0.3",
       "targets": [
         {
           "datasource": {
@@ -359,7 +393,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.2",
+      "pluginVersion": "9.0.3",
       "targets": [
         {
           "datasource": {
