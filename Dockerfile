@@ -1,4 +1,4 @@
-FROM grafana/grafana:9.0.3
+FROM grafana/grafana:9.0.6
 
 # Set Grafana options
 ENV GF_ENABLE_GZIP=true
@@ -26,6 +26,10 @@ COPY img/fav32.png /usr/share/grafana/public/img
 
 # Replace Logo
 COPY img/logo.svg /usr/share/grafana/public/img/grafana_icon.svg
+
+# Background
+COPY img/background.svg /usr/share/grafana/public/img/g8_login_dark.svg
+COPY img/background.svg /usr/share/grafana/public/img/g8_login_light.svg
 
 # Update Title
 RUN sed -i 's|<title>\[\[.AppTitle\]\]</title>|<title>Balena Application</title>|g' /usr/share/grafana/public/views/index.html

@@ -18,7 +18,7 @@ The Balena Application plugin for Grafana allows to display device information a
 
 ## Getting Started
 
-The Balena application is under development and not included in the Grafana Marketplace yet. It can be installed manually from our private repository or downloaded directly from the GitHub repository:
+The Balena application is not included in the Grafana Marketplace. It can be installed manually from our Private Repository or downloaded directly from the GitHub repository:
 
 ```bash
 grafana-cli --repo https://volkovlabs.io/plugins plugins install volkovlabs-balena-app
