@@ -8,6 +8,8 @@
 - Add Refresh Option to Service panel to adjust update interval (#14)
 - Upgrade to Grafana 9.0.3 (#31)
 - Upgrade to Grafana 9.0.6 (#34)
+- Separate API for v1 and v2, and update types (#35)
+- Move Device information to Service Panel (#36)
 
 ### Bug fixes
 
