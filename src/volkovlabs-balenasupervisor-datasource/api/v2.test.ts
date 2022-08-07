@@ -166,4 +166,203 @@ describe('V2', () => {
       expect(result[0].fields.length).toEqual(7);
     });
   });
+
+  /**
+   * Start Application Service
+   */
+  describe('startApplicationService', () => {
+    const response = {
+      status: 200,
+      statusText: 'OK',
+      ok: true,
+      data: 'OK',
+      headers: {},
+      url: 'https://localhost/api/datasources/proxy/1/v2/applications/1951752/start-service',
+      type: 'basic',
+      redirected: false,
+      config: {
+        url: 'api/datasources/proxy/1/v2/applications/1951752/start-service',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Grafana-Org-Id': 1,
+        },
+        data: '{"serviceName":"grafana"}',
+        retry: 0,
+        hideFromInspector: false,
+      },
+    };
+
+    it('Should make startApplicationService request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+
+      let result = await api.startApplicationService(1951752, 'grafana');
+      expect(result).toBeTruthy();
+    });
+
+    it('Should not make startApplicationService request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(null));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.startApplicationService(1951752, 'grafana');
+      expect(result).toBeFalsy();
+    });
+
+    it('Should throw exception startApplicationService request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getErrorResponse(response));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.startApplicationService(1951752, 'grafana');
+      expect(result).toBeFalsy();
+    });
+  });
+
+  /**
+   * Stop Application Service
+   */
+  describe('stopApplicationService', () => {
+    const response = {
+      status: 200,
+      statusText: 'OK',
+      ok: true,
+      data: 'OK',
+      headers: {},
+      url: 'https://localhost/api/datasources/proxy/1/v2/applications/1951752/stop-service',
+      type: 'basic',
+      redirected: false,
+      config: {
+        url: 'api/datasources/proxy/1/v2/applications/1951752/stop-service',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Grafana-Org-Id': 1,
+        },
+        data: '{"serviceName":"grafana"}',
+        retry: 0,
+        hideFromInspector: false,
+      },
+    };
+
+    it('Should make stopApplicationService request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+
+      let result = await api.stopApplicationService(1951752, 'grafana');
+      expect(result).toBeTruthy();
+    });
+
+    it('Should not make stopApplicationService request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(null));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.stopApplicationService(1951752, 'grafana');
+      expect(result).toBeFalsy();
+    });
+
+    it('Should throw exception stopApplicationService request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getErrorResponse(response));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.stopApplicationService(1951752, 'grafana');
+      expect(result).toBeFalsy();
+    });
+  });
+
+  /**
+   * Restart Application Service
+   */
+  describe('restartApplicationService', () => {
+    const response = {
+      status: 200,
+      statusText: 'OK',
+      ok: true,
+      data: 'OK',
+      headers: {},
+      url: 'https://localhost/api/datasources/proxy/1/v2/applications/1951752/restart-service',
+      type: 'basic',
+      redirected: false,
+      config: {
+        url: 'api/datasources/proxy/1/v2/applications/1951752/restart-service',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Grafana-Org-Id': 1,
+        },
+        data: '{"serviceName":"grafana"}',
+        retry: 0,
+        hideFromInspector: false,
+      },
+    };
+
+    it('Should make restartApplicationService request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+
+      let result = await api.restartApplicationService(1951752, 'grafana');
+      expect(result).toBeTruthy();
+    });
+
+    it('Should not make restartApplicationService request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(null));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.restartApplicationService(1951752, 'grafana');
+      expect(result).toBeFalsy();
+    });
+
+    it('Should throw exception restartApplicationService request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getErrorResponse(response));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.restartApplicationService(1951752, 'grafana');
+      expect(result).toBeFalsy();
+    });
+  });
+
+  /**
+   * Restart Application Services
+   */
+  describe('restartApplicationServices', () => {
+    const response = {
+      status: 200,
+      statusText: 'OK',
+      ok: true,
+      data: 'OK',
+      headers: {},
+      url: 'https://localhost/api/datasources/proxy/1/v2/applications/1951752/restart',
+      type: 'basic',
+      redirected: false,
+      config: {
+        url: 'api/datasources/proxy/1/v2/applications/1951752/restart',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Grafana-Org-Id': 1,
+        },
+        retry: 0,
+        hideFromInspector: false,
+      },
+    };
+
+    it('Should make restartApplicationServices request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+
+      let result = await api.restartApplicationServices(1951752);
+      expect(result).toBeTruthy();
+    });
+
+    it('Should not make restartApplicationServices request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(null));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.restartApplicationServices(1951752);
+      expect(result).toBeFalsy();
+    });
+
+    it('Should throw exception restartApplicationServices request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getErrorResponse(response));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.restartApplicationServices(1951752);
+      expect(result).toBeFalsy();
+    });
+  });
 });

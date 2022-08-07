@@ -431,7 +431,7 @@ export class ServicePanel extends PureComponent<Props, State> {
         <ConfirmModal
           isOpen={!!this.state.restartAppId}
           title="Restart Application Services"
-          body={'Please confirm to restart all Application Services'}
+          body={'Please confirm to restart all Application Services.'}
           confirmText="Confirm"
           icon="exclamation-triangle"
           onConfirm={() => {
@@ -444,7 +444,7 @@ export class ServicePanel extends PureComponent<Props, State> {
         <ConfirmModal
           isOpen={!!this.state.reboot}
           title="Reboot Device"
-          body={'Please confirm to reboot'}
+          body={'Please confirm to reboot the device.'}
           confirmText="Confirm"
           icon="exclamation-triangle"
           onConfirm={() => {

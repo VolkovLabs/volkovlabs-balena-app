@@ -222,6 +222,8 @@ export async function startApplicationService(this: Api, appId: number, serviceN
     console.error(e.statusText);
   });
 
+  console.log(response);
+
   /**
    * Check Response
    */
@@ -257,8 +259,6 @@ export async function stopApplicationService(this: Api, appId: number, serviceNa
     console.error('Stop Application Service: API request failed', response);
     return false;
   }
-
-  console.log(response);
 
   return true;
 }

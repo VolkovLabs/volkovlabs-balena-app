@@ -106,4 +106,56 @@ describe('V1', () => {
       expect(result?.length).toEqual(0);
     });
   });
+
+  /**
+   * Reboot Device
+   */
+  describe('rebootDevice', () => {
+    const response = {
+      status: 202,
+      statusText: 'Accepted',
+      ok: true,
+      data: {
+        Data: 'OK',
+        Error: null,
+      },
+      headers: {},
+      url: 'https://localhost/api/datasources/proxy/1/v1/reboot',
+      type: 'basic',
+      redirected: false,
+      config: {
+        url: 'api/datasources/proxy/1/v1/reboot',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Grafana-Org-Id': 1,
+        },
+        retry: 0,
+        hideFromInspector: false,
+      },
+    };
+
+    it('Should make rebootDevice request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+
+      let result = await api.rebootDevice();
+      expect(result).toBeTruthy();
+    });
+
+    it('Should not make rebootDevice request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(null));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.rebootDevice();
+      expect(result).toBeFalsy();
+    });
+
+    it('Should throw exception rebootDevice request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getErrorResponse(response));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.rebootDevice();
+      expect(result).toBeFalsy();
+    });
+  });
 });
