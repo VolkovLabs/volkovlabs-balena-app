@@ -435,4 +435,80 @@ describe('V2', () => {
       expect(result).toBeFalsy();
     });
   });
+
+  /**
+   * Get Journal Logs
+   */
+  describe('getJournalLogs', () => {
+    let response = {
+      status: 200,
+      statusText: 'OK',
+      ok: true,
+      data: '-- Journal begins at Sun 2022-08-07 20:50:50 UTC, ends at Sun 2022-08-07 21:22:41 UTC. --\nAug 07 21:13:21 d1a5b1b 4ff9c9aca8be[1623]: [api]     GET /v2/state/status 200 - 27.550 ms\nAug 07 21:13:21 d1a5b1b 4ff9c9aca8be[1623]: [api]     GET /v2/local/target-state \n',
+      headers: {},
+      url: 'https://localhost/api/datasources/proxy/1/v2/journal-logs',
+      type: 'basic',
+      redirected: false,
+      config: {
+        method: 'POST',
+        url: 'api/datasources/proxy/1/v2/journal-logs',
+        responseType: 'text',
+        data: {
+          follow: false,
+          all: false,
+          format: 'short',
+          count: 300,
+          unit: 'balena.service',
+        },
+        retry: 0,
+        headers: {
+          'X-Grafana-Org-Id': 1,
+        },
+        hideFromInspector: false,
+      },
+    };
+
+    it('Should make getJournalLogs request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+
+      let result = await api.getJournalLogs();
+      expect(result).toBeTruthy();
+      expect(result?.length).toEqual(4);
+    });
+
+    it('Should not make getJournalLogs request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(null));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.getJournalLogs();
+      expect(result).toBeTruthy();
+      expect(result?.length).toEqual(0);
+    });
+
+    it('Should throw exception getJournalLogs request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getErrorResponse(response));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.getJournalLogs();
+      expect(result).toBeTruthy();
+      expect(result?.length).toEqual(0);
+    });
+
+    it('Should make getJournalLogsFrame request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+
+      let result = await api.getJournalLogsFrame({ refId: 'A', requestType: RequestTypeValue.LOGS });
+      expect(result?.length).toEqual(1);
+      expect(result[0].fields.length).toEqual(2);
+    });
+
+    it('Should handle getDeviceFrame request with no data', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse({ ...response, data: '' }));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.getJournalLogsFrame({ refId: 'A', requestType: RequestTypeValue.LOGS });
+      expect(result).toBeTruthy();
+      expect(result?.length).toEqual(1);
+    });
+  });
 });

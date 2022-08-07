@@ -172,7 +172,7 @@ export async function getJournalLogsFrame(this: Api, query: Query): Promise<Muta
 }
 
 /**
- * Get Target Status
+ * Get Target State
  */
 export async function getTargetState(this: Api): Promise<TargetState | null> {
   const response = await lastValueFrom(
@@ -198,7 +198,7 @@ export async function getTargetState(this: Api): Promise<TargetState | null> {
    */
   const targetState = response.data as TargetState;
   if (!Object.keys(targetState).length) {
-    console.log('Target State is not found');
+    console.error('Target State is not found');
     return null;
   }
 
