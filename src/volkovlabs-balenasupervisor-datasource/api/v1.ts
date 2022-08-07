@@ -16,7 +16,7 @@ export async function getDevice(this: Api): Promise<Device | null> {
       url: `${this.instanceSettings.url}/v1/device`,
       responseType: 'text',
     })
-  ).catch(function (e) {
+  ).catch((e) => {
     console.error(e.statusText);
   });
 
@@ -71,4 +71,31 @@ export async function getDeviceFrame(this: Api, query: Query): Promise<MutableDa
   });
 
   return [frame];
+}
+
+/**
+ * Reboot Device
+ */
+export async function rebootDevice(this: Api): Promise<boolean> {
+  const response = await lastValueFrom(
+    getBackendSrv().fetch({
+      url: `${this.instanceSettings.url}/v1/reboot`,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  ).catch((e) => {
+    console.error(e.statusText);
+  });
+
+  /**
+   * Check Response
+   */
+  if (!response || !response.data) {
+    console.error('Reboot Device: API request failed', response);
+    return false;
+  }
+
+  return true;
 }
