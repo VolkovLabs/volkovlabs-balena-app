@@ -12,15 +12,17 @@ import {
   TagList,
 } from '@grafana/ui';
 import {
+  ContainerStatus,
   DataSourceApi,
+  Device,
   getSupervisorDatasource,
   ServiceContainer,
   StateStatus,
   SupervisorAPIDataSource,
   TargetState,
-} from '../../../volkovlabs-balenasupervisor-datasource';
+} from '@volkovlabs/volkovlabs-balenasupervisor-datasource';
 import { ControlMode, ControlModeOptions } from '../../constants';
-import { ContainerIcon, ImageIcon, ReleaseIcon } from '../../icons';
+import { ContainerIcon, DeviceIcon, ImageIcon, ReleaseIcon } from '../../icons';
 import { Styles } from '../../styles';
 import { ServiceOptions } from '../../types';
 import { StateDrawer } from '../StateDrawer';
@@ -38,6 +40,11 @@ interface State {
    * Control Mode
    */
   mode: ControlMode;
+
+  /**
+   * Device
+   */
+  device: Device | null;
 
   /**
    * State Status
@@ -90,6 +97,7 @@ export class ServicePanel extends PureComponent<Props, State> {
      */
     this.state = {
       mode: ControlMode.CONTAINER,
+      device: null,
       stateStatus: null,
       targetState: null,
       loading: 'Loading...',
@@ -116,9 +124,10 @@ export class ServicePanel extends PureComponent<Props, State> {
       /**
        * Target State
        */
+      const device = await this.datasource.api.getDevice();
       const stateStatus = await this.datasource.api.getStateStatus();
       const targetState = await this.datasource.api.getTargetState();
-      this.setState({ targetState, stateStatus, loading: '' });
+      this.setState({ device, targetState, stateStatus, loading: '' });
 
       this.getStateStatus();
     }, this.props.options.refresh);
@@ -141,9 +150,10 @@ export class ServicePanel extends PureComponent<Props, State> {
     /**
      * Target State
      */
+    const device = await this.datasource.api.getDevice();
     const stateStatus = await this.datasource.api.getStateStatus();
     const targetState = await this.datasource.api.getTargetState();
-    this.setState({ targetState, stateStatus, loading: '' });
+    this.setState({ device, targetState, stateStatus, loading: '' });
 
     /**
      * Timeout
@@ -316,117 +326,131 @@ export class ServicePanel extends PureComponent<Props, State> {
 
         {this.state.mode === ControlMode.CONTAINER &&
           this.state.stateStatus &&
-          this.state.stateStatus.containers.length > 0 && (
+          this.state.stateStatus.containers.length > 0 &&
+          this.state.stateStatus.containers
+            .sort((a, b) => a.serviceName.localeCompare(b.serviceName))
+            .map((container, index) => {
+              return (
+                <Card key={index}>
+                  <Card.Heading>{container.serviceName}</Card.Heading>
+                  <Card.Meta>
+                    {[`Created At: ${dateTime(container.createdAt).toString()}`, `Id: ${container.serviceId}`]}
+                  </Card.Meta>
+                  <Card.Figure>
+                    <ContainerIcon size={40} />
+                  </Card.Figure>
+                  <Card.Tags>
+                    <TagList tags={[container.status]} />
+                  </Card.Tags>
+                  <Card.SecondaryActions className={cx(styles.cardButton)}>
+                    <IconButton
+                      key="start"
+                      name="play"
+                      tooltip="Start"
+                      disabled={container.status === ContainerStatus.RUNNING}
+                      onClick={() => {
+                        this.onStartService(container);
+                      }}
+                    />
+                    <IconButton
+                      key="stop"
+                      name="pause"
+                      tooltip="Stop"
+                      disabled={container.status !== ContainerStatus.RUNNING}
+                      onClick={() => {
+                        this.onStopService(container);
+                      }}
+                    />
+                    <IconButton
+                      key="restart"
+                      name="sync"
+                      tooltip="Restart"
+                      onClick={() => {
+                        this.onRestartService(container);
+                      }}
+                    />
+                  </Card.SecondaryActions>
+                </Card>
+              );
+            })}
+
+        {this.state.mode === ControlMode.IMAGE &&
+          this.state.stateStatus &&
+          this.state.stateStatus.images.length > 0 &&
+          this.state.stateStatus.images
+            .sort((a, b) => a.serviceName.localeCompare(b.serviceName))
+            .map((image, index) => {
+              return (
+                <Card key={index}>
+                  <Card.Heading>{image.serviceName}</Card.Heading>
+                  <Card.Figure>
+                    <ImageIcon size={40} />
+                  </Card.Figure>
+                  <Card.Meta>
+                    {[
+                      `Download Progress: ${image.downloadProgress ? image.downloadProgress : 'Done'}`,
+                      `Id: ${image.imageId}`,
+                    ]}
+                  </Card.Meta>
+                  <Card.Tags>
+                    <TagList tags={[image.status]} />
+                  </Card.Tags>
+                </Card>
+              );
+            })}
+
+        {this.state.mode === ControlMode.DEVICE &&
+          this.state.device &&
+          this.state.stateStatus &&
+          this.state.stateStatus.release && (
             <>
-              {this.state.stateStatus.containers
-                .sort((a, b) => a.serviceName.localeCompare(b.serviceName))
-                .map((container, index) => {
-                  return (
-                    <Card key={index}>
-                      <Card.Heading>{container.serviceName}</Card.Heading>
-                      <Card.Meta>
-                        {[`Created At: ${dateTime(container.createdAt).toString()}`, `Id: ${container.serviceId}`]}
-                      </Card.Meta>
-                      <Card.Figure>
-                        <ContainerIcon size={40} />
-                      </Card.Figure>
-                      <Card.Tags>
-                        <TagList tags={[container.status]} />
-                      </Card.Tags>
-                      <Card.SecondaryActions className={cx(styles.cardButton)}>
-                        <IconButton
-                          key="start"
-                          name="play"
-                          tooltip="Start"
-                          disabled={container.status === 'Running'}
-                          onClick={() => {
-                            this.onStartService(container);
-                          }}
-                        />
-                        <IconButton
-                          key="stop"
-                          name="pause"
-                          tooltip="Stop"
-                          disabled={container.status !== 'Running'}
-                          onClick={() => {
-                            this.onStopService(container);
-                          }}
-                        />
-                        <IconButton
-                          key="restart"
-                          name="sync"
-                          tooltip="Restart"
-                          onClick={() => {
-                            this.onRestartService(container);
-                          }}
-                        />
-                      </Card.SecondaryActions>
-                    </Card>
-                  );
-                })}
+              <Card>
+                <Card.Heading>Device</Card.Heading>
+                <Card.Description>{`IP Address: ${this.state.device.ipAddress}`}</Card.Description>
+                <Card.Figure>
+                  <DeviceIcon size={40} />
+                </Card.Figure>
+                <Card.Meta>
+                  {[`Supervisor: ${this.state.device.supervisorVersion}`, `${this.state.device.osVersion}`]}
+                </Card.Meta>
+                <Card.Tags>
+                  <TagList tags={[this.state.device.status]} />
+                </Card.Tags>
+              </Card>
+              <Card>
+                <Card.Heading>Release</Card.Heading>
+                <Card.Description>{this.state.stateStatus.release}</Card.Description>
+                <Card.Figure>
+                  <ReleaseIcon size={40} />
+                </Card.Figure>
+                <Card.Meta>
+                  {[
+                    `Download Progress: ${
+                      this.state.stateStatus.overallDownloadProgress
+                        ? this.state.stateStatus.overallDownloadProgress
+                        : 'Done'
+                    }`,
+                  ]}
+                </Card.Meta>
+                <Card.Actions>
+                  {this.state.targetState && (
+                    <Button
+                      onClick={() => {
+                        this.setState({ stateDrawer: true });
+                      }}
+                      icon="layer-group"
+                      variant="secondary"
+                    >
+                      Target State
+                    </Button>
+                  )}
+                </Card.Actions>
+                <Card.Tags>
+                  <TagList tags={[this.state.stateStatus.appState]} />
+                </Card.Tags>
+              </Card>
             </>
           )}
-
-        {this.state.mode === ControlMode.IMAGE && this.state.stateStatus && this.state.stateStatus.images.length > 0 && (
-          <>
-            {this.state.stateStatus.images
-              .sort((a, b) => a.serviceName.localeCompare(b.serviceName))
-              .map((image, index) => {
-                return (
-                  <Card key={index}>
-                    <Card.Heading>{image.serviceName}</Card.Heading>
-                    <Card.Figure>
-                      <ImageIcon size={40} />
-                    </Card.Figure>
-                    <Card.Meta>
-                      {[
-                        `Download Progress: ${image.downloadProgress ? image.downloadProgress : 'Done'}`,
-                        `Id: ${image.imageId}`,
-                      ]}
-                    </Card.Meta>
-                    <Card.Tags>
-                      <TagList tags={[image.status]} />
-                    </Card.Tags>
-                  </Card>
-                );
-              })}
-          </>
-        )}
-
-        {this.state.mode === ControlMode.DEVICE && this.state.stateStatus && this.state.stateStatus.release && (
-          <Card>
-            <Card.Heading>Release</Card.Heading>
-            <Card.Description>{this.state.stateStatus.release}</Card.Description>
-            <Card.Figure>
-              <ReleaseIcon size={40} />
-            </Card.Figure>
-            <Card.Meta>
-              {[
-                `Download Progress: ${
-                  this.state.stateStatus.overallDownloadProgress
-                    ? this.state.stateStatus.overallDownloadProgress
-                    : 'Done'
-                }`,
-              ]}
-            </Card.Meta>
-            <Card.Actions>
-              {this.state.targetState && (
-                <Button
-                  onClick={() => {
-                    this.setState({ stateDrawer: true });
-                  }}
-                  icon="layer-group"
-                  variant="secondary"
-                >
-                  Target State
-                </Button>
-              )}
-            </Card.Actions>
-            <Card.Tags>
-              <TagList tags={[this.state.stateStatus.appState]} />
-            </Card.Tags>
-          </Card>
-        )}
 
         <ConfirmModal
           isOpen={!!this.state.restartAppId}
