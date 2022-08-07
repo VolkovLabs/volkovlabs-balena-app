@@ -1,6 +1,6 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
-import { defaultQuery, RequestType, RequestTypeValue } from '../../constants';
+import { DefaultQuery, RequestType, RequestTypeValue } from '../../constants';
 import { Query } from '../../types';
 import { QueryEditor } from './QueryEditor';
 
@@ -15,7 +15,7 @@ type ShallowComponent = ShallowWrapper<QueryEditor['props'], QueryEditor['state'
  * @param overrideQuery
  */
 export const getQuery = (overrideQuery = {}): Query => ({
-  requestType: defaultQuery.requestType,
+  requestType: DefaultQuery.requestType,
   refId: 'A',
   ...overrideQuery,
 });

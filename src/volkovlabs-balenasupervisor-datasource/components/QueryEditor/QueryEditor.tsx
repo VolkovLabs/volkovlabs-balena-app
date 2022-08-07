@@ -3,7 +3,7 @@ import React, { FormEvent, PureComponent } from 'react';
 import { QueryEditorProps, SelectableValue } from '@grafana/data';
 import { InlineField, InlineFieldRow, Input, Select, Slider } from '@grafana/ui';
 import {
-  defaultQuery,
+  DefaultQuery,
   LogFormatOptions,
   LogFormatValue,
   LogUnitOptions,
@@ -72,7 +72,7 @@ export class QueryEditor extends PureComponent<Props> {
    * Render
    */
   render() {
-    const query = defaults(this.props.query, defaultQuery);
+    const query = defaults(this.props.query, DefaultQuery);
 
     return (
       <>
