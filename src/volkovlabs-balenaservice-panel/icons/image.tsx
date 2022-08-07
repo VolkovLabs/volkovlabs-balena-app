@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { SVGProps } from '../types';
 
 /**
- * Weight
+ * Image
  */
 export const ImageIcon: FC<SVGProps> = ({ size, fill, title, ...rest }) => {
   return (

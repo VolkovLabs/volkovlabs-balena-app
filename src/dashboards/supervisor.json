@@ -6,7 +6,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.0.3"
+      "version": "9.0.6"
     },
     {
       "type": "panel",
@@ -30,7 +30,7 @@
       "type": "datasource",
       "id": "volkovlabs-balenasupervisor-datasource",
       "name": "Balena Supervisor",
-      "version": "%VERSION%"
+      "version": "1.0.0"
     }
   ],
   "annotations": {
@@ -59,354 +59,9 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1658799324349,
   "links": [],
   "liveNow": true,
   "panels": [
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "-- Dashboard --"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 0,
-        "y": 0
-      },
-      "id": 5,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/^IP address$/",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.0.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "-- Dashboard --"
-          },
-          "panelId": 4,
-          "refId": "A"
-        }
-      ],
-      "title": "IP",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "volkovlabs-balenasupervisor-datasource",
-        "uid": "${supervisor}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 4,
-        "y": 0
-      },
-      "id": 4,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/^OS$/",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.0.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "volkovlabs-balenasupervisor-datasource",
-            "uid": "${supervisor}"
-          },
-          "logCount": 200,
-          "logFormat": "short",
-          "logUnit": "balena.service",
-          "refId": "A",
-          "requestType": "device"
-        }
-      ],
-      "title": "OS",
-      "transformations": [],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "-- Dashboard --"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 5,
-        "x": 10,
-        "y": 0
-      },
-      "id": 10,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/^Supervisor$/",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.0.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "-- Dashboard --"
-          },
-          "panelId": 4,
-          "refId": "A"
-        }
-      ],
-      "title": "Supervisor",
-      "transformations": [],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "-- Dashboard --"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "false": {
-                  "color": "blue",
-                  "index": 0
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 5,
-        "x": 15,
-        "y": 0
-      },
-      "id": 6,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/.*/",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.0.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "-- Dashboard --"
-          },
-          "panelId": 4,
-          "refId": "A"
-        }
-      ],
-      "title": "Update",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Commit": true,
-              "IP address": true,
-              "MAC address": true,
-              "OS": true,
-              "Port": true,
-              "Progress": true,
-              "Status": true,
-              "Supervisor": true
-            },
-            "indexByName": {},
-            "renameByName": {
-              "Update Downloaded": "Downloaded",
-              "Update Failed": "Failed",
-              "Update Pending": "Pending"
-            }
-          }
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "-- Dashboard --"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "Downloading": {
-                  "color": "blue",
-                  "index": 2
-                },
-                "Idle": {
-                  "color": "green",
-                  "index": 0
-                },
-                "Installing": {
-                  "color": "orange",
-                  "index": 3
-                },
-                "Starting": {
-                  "color": "orange",
-                  "index": 1
-                },
-                "Stopping": {
-                  "color": "orange",
-                  "index": 4
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 20,
-        "y": 0
-      },
-      "id": 2,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/^Status$/",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.0.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "-- Dashboard --"
-          },
-          "panelId": 4,
-          "refId": "A"
-        }
-      ],
-      "title": "Status",
-      "type": "stat"
-    },
     {
       "datasource": {
         "type": "volkovlabs-balenasupervisor-datasource",
@@ -416,7 +71,7 @@
         "h": 28,
         "w": 15,
         "x": 0,
-        "y": 3
+        "y": 0
       },
       "id": 9,
       "options": {
@@ -452,8 +107,101 @@
         "type": "volkovlabs-balenasupervisor-datasource",
         "uid": "${supervisor}"
       },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "false": {
+                  "color": "blue",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 28,
+        "h": 3,
+        "w": 9,
+        "x": 15,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "/.*/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-balenasupervisor-datasource",
+            "uid": "${supervisor}"
+          },
+          "logCount": 200,
+          "logExclude": "journalctl",
+          "logFormat": "short",
+          "logUnit": "balena.service",
+          "refId": "A",
+          "requestType": "device"
+        }
+      ],
+      "title": "Update",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Commit": true,
+              "IP address": true,
+              "MAC address": true,
+              "OS": true,
+              "Port": true,
+              "Progress": true,
+              "Status": true,
+              "Supervisor": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Update Downloaded": "Downloaded",
+              "Update Failed": "Failed",
+              "Update Pending": "Pending"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "volkovlabs-balenasupervisor-datasource",
+        "uid": "${supervisor}"
+      },
+      "gridPos": {
+        "h": 25,
         "w": 9,
         "x": 15,
         "y": 3
