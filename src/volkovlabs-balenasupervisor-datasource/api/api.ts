@@ -2,9 +2,8 @@ import { lastValueFrom } from 'rxjs';
 import { DataSourceInstanceSettings, FieldType, MutableDataFrame } from '@grafana/data';
 import { getBackendSrv } from '@grafana/runtime';
 import { DefaultQuery, RequestTypeValue } from '../constants';
-import { DataSourceOptions, Query } from '../types';
-import { parseJSONToCamelCase } from '../utils';
-import { Device, StateStatus, TargetState } from './models';
+import { DataSourceOptions, Query, StateStatus, TargetState } from '../types';
+import { getDevice, getDeviceFrame } from './v1';
 
 /**
  * API
@@ -42,73 +41,6 @@ export class Api {
     }
 
     return false;
-  }
-
-  /**
-   * Get Device
-   */
-  async getDevice(): Promise<Device | null> {
-    const response = await lastValueFrom(
-      getBackendSrv().fetch({
-        method: 'GET',
-        url: `${this.instanceSettings.url}/v1/device`,
-        responseType: 'text',
-      })
-    ).catch(function (e) {
-      console.error(e.statusText);
-    });
-
-    /**
-     * Check Response
-     */
-    if (!response || !response.data) {
-      console.error('Get Device: API Request failed', response);
-      return null;
-    }
-
-    /**
-     * Check Device
-     */
-    const device = parseJSONToCamelCase(response.data as any) as Device;
-    if (!device) {
-      console.log('Device is not found');
-      return null;
-    }
-
-    return device;
-  }
-
-  /**
-   * Get Device Frame
-   */
-  async getDeviceFrame(query: Query): Promise<MutableDataFrame[]> {
-    const device = await this.getDevice();
-    if (!device) {
-      return [];
-    }
-
-    /**
-     * Create frame
-     */
-    const frame = new MutableDataFrame({
-      name: RequestTypeValue.DEVICE,
-      refId: query.refId,
-      fields: [
-        { name: 'IP address', values: [device.ipAddress], type: FieldType.string },
-        { name: 'Port', values: [device.apiPort], type: FieldType.number },
-        { name: 'Status', values: [device.status], type: FieldType.string },
-        { name: 'OS', values: [device.osVersion], type: FieldType.string },
-        { name: 'Progress', values: [device.downloadProgress], type: FieldType.number },
-        { name: 'Commit', values: [device.commit], type: FieldType.string },
-        { name: 'Supervisor', values: [device.supervisorVersion], type: FieldType.string },
-        { name: 'MAC address', values: [device.macAddress], type: FieldType.string },
-        { name: 'Update Downloaded', values: [device.updateDownloaded], type: FieldType.boolean },
-        { name: 'Update Pending', values: [device.updatePending], type: FieldType.boolean },
-        { name: 'Update Failed', values: [device.updateFailed], type: FieldType.boolean },
-      ],
-    });
-
-    return [frame];
   }
 
   /**
@@ -449,4 +381,10 @@ export class Api {
 
     return true;
   }
+
+  /**
+   * V1
+   */
+  getDevice = getDevice;
+  getDeviceFrame = getDeviceFrame;
 }

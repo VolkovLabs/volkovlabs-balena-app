@@ -1,13 +1,17 @@
 import { PanelData } from '@grafana/data';
 import { getDataSourceSrv } from '@grafana/runtime';
 import { SupervisorAPIDataSource } from './constants';
-import { DataSourceApi } from './types';
+import { DataSourceApi, Device } from './types';
 
 /**
  * Parse JSON to Camel Case
  */
-export const parseJSONToCamelCase = (obj: any): any =>
-  JSON.parse(obj, function (key, value) {
+export const parseJSONToCamelCase = (obj: any): Device | null => {
+  if (!Object.keys(obj).length) {
+    return null;
+  }
+
+  return JSON.parse(obj, function (key, value) {
     const camelCaseKey = key
       .toLowerCase()
       .replace(/^_+/g, '')
@@ -21,7 +25,8 @@ export const parseJSONToCamelCase = (obj: any): any =>
     }
 
     this[camelCaseKey] = value;
-  });
+  }) as Device;
+};
 
 /**
  * Get Data Source
