@@ -79,16 +79,17 @@ export class DataSource extends DataSourceApi<Query, DataSourceOptions> {
    */
   async testDatasource() {
     /**
-     * Check Ping
+     * Check Ping and Device
      */
     const isStatusOk = await this.api.checkPing();
+    const device = await this.api.getDevice();
 
     /**
      * Return
      */
     return {
-      status: isStatusOk ? DataSourceTestStatus.SUCCESS : DataSourceTestStatus.ERROR,
-      message: isStatusOk ? `Connected...` : "Error. Can't connect.",
+      status: isStatusOk && device ? DataSourceTestStatus.SUCCESS : DataSourceTestStatus.ERROR,
+      message: isStatusOk && device ? `Connected...` : "Error. Can't connect.",
     };
   }
 }
