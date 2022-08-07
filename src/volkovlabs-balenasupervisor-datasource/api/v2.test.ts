@@ -365,4 +365,74 @@ describe('V2', () => {
       expect(result).toBeFalsy();
     });
   });
+
+  /**
+   * Get Target State
+   */
+  describe('getTargetState', () => {
+    let response = {
+      status: 200,
+      statusText: 'OK',
+      ok: true,
+      data: {
+        status: 'success',
+        state: {
+          local: {
+            name: 'dev',
+            config: {},
+            apps: {},
+          },
+          dependent: {
+            apps: [],
+            devices: [],
+          },
+        },
+      },
+      headers: {},
+      url: 'https://localhost/api/datasources/proxy/1/v2/local/target-state',
+      type: 'basic',
+      redirected: false,
+      config: {
+        method: 'GET',
+        url: 'api/datasources/proxy/1/v2/local/target-state',
+        responseType: 'json',
+        retry: 0,
+        headers: {
+          'X-Grafana-Org-Id': 1,
+        },
+        hideFromInspector: false,
+      },
+    };
+
+    it('Should make getTargetState request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(response));
+
+      let result = await api.getTargetState();
+      expect(result).toBeTruthy();
+    });
+
+    it('Should not make getTargetState request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse(null));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.getTargetState();
+      expect(result).toBeFalsy();
+    });
+
+    it('Should not make getTargetState request without data', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getResponse({ ...response, data: {} }));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.getTargetState();
+      expect(result).toBeFalsy();
+    });
+
+    it('Should throw exception getTargetState request', async () => {
+      fetchRequestMock = jest.fn().mockImplementation(() => getErrorResponse(response));
+      jest.spyOn(console, 'error').mockImplementation();
+
+      let result = await api.getTargetState();
+      expect(result).toBeFalsy();
+    });
+  });
 });

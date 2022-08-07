@@ -197,7 +197,7 @@ export async function getTargetState(this: Api): Promise<TargetState | null> {
    * Check Target State
    */
   const targetState = response.data as TargetState;
-  if (!targetState) {
+  if (!Object.keys(targetState).length) {
     console.log('Target State is not found');
     return null;
   }
@@ -221,8 +221,6 @@ export async function startApplicationService(this: Api, appId: number, serviceN
   ).catch((e) => {
     console.error(e.statusText);
   });
-
-  console.log(response);
 
   /**
    * Check Response
