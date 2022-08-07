@@ -7,7 +7,7 @@
 - Upgrade to Grafana 9.0.2 (#29)
 - Add Refresh Option to Service panel to adjust update interval (#14)
 - Upgrade to Grafana 9.0.3 (#31)
-- Upgrade to Grafana 9.0.6 (#33)
+- Upgrade to Grafana 9.0.6 (#34)
 
 ### Bug fixes
 
