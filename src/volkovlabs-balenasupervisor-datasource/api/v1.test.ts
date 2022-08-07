@@ -43,7 +43,7 @@ describe('V1', () => {
   const api = new Api(instanceSettings);
 
   /**
-   * getDevice, getDeviceFrame
+   * Get Device
    */
   describe('getDevice', () => {
     let response = {
