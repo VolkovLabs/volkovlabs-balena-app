@@ -5,7 +5,7 @@ import { RequestTypeValue } from './request';
 /**
  * Defaults for Query
  */
-export const defaultQuery: Partial<Query> = {
+export const DefaultQuery: Partial<Query> = {
   requestType: RequestTypeValue.NONE,
   logFormat: LogFormatValue.SHORT,
   logUnit: LogUnitValue.BALENA,

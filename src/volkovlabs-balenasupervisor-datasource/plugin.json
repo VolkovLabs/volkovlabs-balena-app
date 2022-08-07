@@ -1,9 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
-  "dependencies": {
-    "grafanaDependency": ">=8.5.0",
-    "plugins": []
-  },
   "id": "volkovlabs-balenasupervisor-datasource",
   "info": {
     "author": {
@@ -11,20 +6,10 @@
       "url": "https://volkovlabs.io"
     },
     "description": "Balena Supervisor API",
-    "keywords": ["balena"],
-    "links": [
-      {
-        "name": "Website",
-        "url": "https://volkovlabs.io"
-      }
-    ],
     "logos": {
       "large": "img/logo.svg",
       "small": "img/logo.svg"
-    },
-    "screenshots": [],
-    "updated": "%TODAY%",
-    "version": "%VERSION%"
+    }
   },
   "logs": true,
   "metrics": true,

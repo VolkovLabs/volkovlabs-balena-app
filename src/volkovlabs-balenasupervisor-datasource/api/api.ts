@@ -1,7 +1,7 @@
 import { lastValueFrom } from 'rxjs';
 import { DataSourceInstanceSettings, FieldType, MutableDataFrame } from '@grafana/data';
 import { getBackendSrv } from '@grafana/runtime';
-import { defaultQuery, RequestTypeValue } from '../constants';
+import { DefaultQuery, RequestTypeValue } from '../constants';
 import { DataSourceOptions, Query } from '../types';
 import { parseJSONToCamelCase } from '../utils';
 import { Device, StateStatus, TargetState } from './models';
@@ -206,9 +206,9 @@ export class Api {
    * Get Journal Logs
    */
   async getJournalLogs(
-    count = defaultQuery.logCount,
-    unit = defaultQuery.logUnit,
-    format = defaultQuery.logFormat
+    count = DefaultQuery.logCount,
+    unit = DefaultQuery.logUnit,
+    format = DefaultQuery.logFormat
   ): Promise<string[]> {
     const response = await lastValueFrom(
       getBackendSrv().fetch({
