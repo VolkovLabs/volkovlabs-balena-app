@@ -137,7 +137,7 @@ describe('V2', () => {
       expect(result[0].fields.length).toEqual(7);
     });
 
-    it('Should handle getDeviceFrame request with no data', async () => {
+    it('Should handle getStateStatusFrame request with no data', async () => {
       fetchRequestMock = jest.fn().mockImplementation(() => getResponse({ ...response, data: {} }));
       jest.spyOn(console, 'error').mockImplementation();
 
@@ -145,7 +145,7 @@ describe('V2', () => {
       expect(result?.length).toEqual(0);
     });
 
-    it('Should handle getDeviceFrame request with no containers', async () => {
+    it('Should handle getStateStatusFrame request with no containers', async () => {
       fetchRequestMock = jest.fn().mockImplementation(() =>
         getResponse({
           ...response,

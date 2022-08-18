@@ -128,11 +128,6 @@ export async function getJournalLogs(
    * Check Logs
    */
   const data = response.data as string;
-  if (!data) {
-    console.log('Logs are not found');
-    return [];
-  }
-
   return data.split('\n');
 }
 
