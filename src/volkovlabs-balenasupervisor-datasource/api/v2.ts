@@ -121,7 +121,7 @@ export async function getJournalLogs(
    */
   if (!response || !response.data) {
     console.error('Get Journal Logs: API Request failed', response);
-    return [];
+    return [`${new Date()} Get Journal Logs: API Request failed`];
   }
 
   /**
