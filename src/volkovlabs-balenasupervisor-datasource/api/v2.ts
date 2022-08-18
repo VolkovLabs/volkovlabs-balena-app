@@ -136,9 +136,6 @@ export async function getJournalLogs(
  */
 export async function getJournalLogsFrame(this: Api, query: Query): Promise<MutableDataFrame[]> {
   let logs = await this.getJournalLogs(query.logCount, query.logUnit, query.logFormat);
-  if (!logs) {
-    return [];
-  }
 
   /**
    * Exclude
