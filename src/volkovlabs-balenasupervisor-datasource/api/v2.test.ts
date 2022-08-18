@@ -482,7 +482,7 @@ describe('V2', () => {
 
       let result = await api.getJournalLogs();
       expect(result).toBeTruthy();
-      expect(result?.length).toEqual(0);
+      expect(result?.length).toEqual(1);
     });
 
     it('Should throw exception getJournalLogs request', async () => {
@@ -491,7 +491,7 @@ describe('V2', () => {
 
       let result = await api.getJournalLogs();
       expect(result).toBeTruthy();
-      expect(result?.length).toEqual(0);
+      expect(result?.length).toEqual(1);
     });
 
     it('Should make getJournalLogsFrame request', async () => {
