@@ -121,18 +121,13 @@ export async function getJournalLogs(
    */
   if (!response || !response.data) {
     console.error('Get Journal Logs: API Request failed', response);
-    return [];
+    return [`${new Date()} Get Journal Logs: API Request failed`];
   }
 
   /**
    * Check Logs
    */
   const data = response.data as string;
-  if (!data) {
-    console.log('Logs are not found');
-    return [];
-  }
-
   return data.split('\n');
 }
 
@@ -141,9 +136,6 @@ export async function getJournalLogs(
  */
 export async function getJournalLogsFrame(this: Api, query: Query): Promise<MutableDataFrame[]> {
   let logs = await this.getJournalLogs(query.logCount, query.logUnit, query.logFormat);
-  if (!logs) {
-    return [];
-  }
 
   /**
    * Exclude

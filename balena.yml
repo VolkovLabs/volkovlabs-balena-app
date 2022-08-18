@@ -10,7 +10,7 @@ post-provisioning: >-
 
   ![Application](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/src/img/app.png)
 
-  [![Grafana 9](https://img.shields.io/badge/Grafana-9.0.6-orange)](https://www.grafana.com) [![Balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
+  [![Grafana 9](https://img.shields.io/badge/Grafana-9.1.0-orange)](https://www.grafana.com) [![Balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
 
   Default Grafana username and password is **admin/admin**.
 

@@ -137,7 +137,7 @@ describe('V2', () => {
       expect(result[0].fields.length).toEqual(7);
     });
 
-    it('Should handle getDeviceFrame request with no data', async () => {
+    it('Should handle getStateStatusFrame request with no data', async () => {
       fetchRequestMock = jest.fn().mockImplementation(() => getResponse({ ...response, data: {} }));
       jest.spyOn(console, 'error').mockImplementation();
 
@@ -145,7 +145,7 @@ describe('V2', () => {
       expect(result?.length).toEqual(0);
     });
 
-    it('Should handle getDeviceFrame request with no containers', async () => {
+    it('Should handle getStateStatusFrame request with no containers', async () => {
       fetchRequestMock = jest.fn().mockImplementation(() =>
         getResponse({
           ...response,
@@ -482,7 +482,7 @@ describe('V2', () => {
 
       let result = await api.getJournalLogs();
       expect(result).toBeTruthy();
-      expect(result?.length).toEqual(0);
+      expect(result?.length).toEqual(1);
     });
 
     it('Should throw exception getJournalLogs request', async () => {
@@ -491,7 +491,7 @@ describe('V2', () => {
 
       let result = await api.getJournalLogs();
       expect(result).toBeTruthy();
-      expect(result?.length).toEqual(0);
+      expect(result?.length).toEqual(1);
     });
 
     it('Should make getJournalLogsFrame request', async () => {
