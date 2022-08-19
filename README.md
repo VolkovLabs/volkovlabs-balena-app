@@ -68,6 +68,7 @@ You can learn more about balena Labels in the [Documentation](https://www.balena
 - Provides Services Panel to start, stop, restart Containers.
 - Allows to filter Logs using Regex pattern.
 - Requires Confirmation to restart all Services and reboot the device.
+- Environment Variables sanitized from Target State.
 
 ## Balena Supervisor
 

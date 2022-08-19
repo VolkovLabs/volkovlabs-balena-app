@@ -3,6 +3,7 @@ import { FieldType, MutableDataFrame } from '@grafana/data';
 import { getBackendSrv } from '@grafana/runtime';
 import { DefaultQuery, RequestTypeValue } from '../constants';
 import { Query, StateStatus, TargetState } from '../types';
+import { sanitizeKeys } from '../utils';
 import { Api } from './api';
 
 /**
@@ -194,7 +195,10 @@ export async function getTargetState(this: Api): Promise<TargetState | null> {
     return null;
   }
 
-  return targetState;
+  /**
+   * Sanitize Environment Variables
+   */
+  return sanitizeKeys(targetState, ['environment']);
 }
 
 /**

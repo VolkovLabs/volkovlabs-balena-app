@@ -47,3 +47,15 @@ export const getSupervisorDatasource = async (data: PanelData): Promise<DataSour
 
   return datasource;
 };
+
+/**
+ * Sanitize keys
+ */
+export const sanitizeKeys = (obj: any, keys: string[]): any =>
+  obj !== Object(obj)
+    ? obj
+    : Array.isArray(obj)
+    ? obj.map((item) => sanitizeKeys(item, keys))
+    : Object.keys(obj)
+        .filter((k) => !keys.includes(k))
+        .reduce((acc, x) => Object.assign(acc, { [x]: sanitizeKeys(obj[x], keys) }), {});
