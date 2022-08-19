@@ -1,10 +1,11 @@
 # Change Log
 
-## 1.3.0 (IN PROGRESS)
+## 1.3.0 (2022-08-18)
 
 ### Features / Enhancements
 
 - Upgrade to Grafana 9.1.0 (#39)
+- Sanitize Environment from Target State (#40)
 
 ## 1.2.0 (2022-08-07)
 
