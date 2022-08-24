@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.4.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Add Balena Application plugin video (#41)
+- Update Balena Application plugin description in the balenaHub (#41)
+
 ## 1.3.0 (2022-08-18)
 
 ### Features / Enhancements
