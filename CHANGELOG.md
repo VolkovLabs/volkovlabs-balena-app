@@ -6,6 +6,7 @@
 
 - Add Balena Application plugin video (#41)
 - Update Balena Application plugin description in the balenaHub (#41)
+- Update to Grafana 9.1.4 (#42)
 
 ## 1.3.0 (2022-08-18)
 
