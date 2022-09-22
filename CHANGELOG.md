@@ -8,6 +8,7 @@
 - Update Balena Application plugin description in the balenaHub (#41)
 - Update to Grafana 9.1.4 (#42)
 - Add Compatibility Check Workflow (#43)
+- Update to Grafana 9.1.6 (#44)
 
 ## 1.3.0 (2022-08-18)
 
