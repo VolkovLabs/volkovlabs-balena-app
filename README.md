@@ -3,10 +3,9 @@
 ![Application](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/src/img/app.png)
 
 [![Grafana 9](https://img.shields.io/badge/Grafana-9.1.6-orange)](https://www.grafana.com)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/VolkovLabs/volkovlabs-balena-app.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/VolkovLabs/volkovlabs-balena-app/context:javascript)
 ![CI](https://github.com/volkovlabs/volkovlabs-balena-app/workflows/CI/badge.svg)
-[![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-balena-app/branch/main/graph/badge.svg?token=2W9VR0PG5N)](https://codecov.io/gh/VolkovLabs/volkovlabs-balena-app)
 [![Balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
+[![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-balena-app/branch/main/graph/badge.svg?token=2W9VR0PG5N)](https://codecov.io/gh/VolkovLabs/volkovlabs-balena-app)
 
 ## Introduction
 
@@ -73,6 +72,12 @@ You can learn more about balena Labels in the [Documentation](https://www.balena
 - Allows to filter Logs using Regex pattern.
 - Requires Confirmation to restart all Services and reboot the device.
 - Environment Variables sanitized from Target State.
+
+## IoT Framework
+
+This video highlights just one example of many possible solutions when you can combine balena for IoT networking and Grafana with open-source one-click away features on top.
+
+[![IoT Framework based on balena and Grafana | Open source Grafana plugins](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/img/framework.png)](https://youtu.be/zf98C3lux54)
 
 ## Balena Supervisor
 
