@@ -1,12 +1,14 @@
 name: balena-app
-version: 1.3.0
+version: 1.4.0
 type: sw.application
 description: >-
   The Balena Application plugin for Grafana allows to display device information and manage services using Balena Supervisor API.
 post-provisioning: >-
   ![Application](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/src/img/app.png)
 
-  [![Grafana 9](https://img.shields.io/badge/Grafana-9.1.6-orange)](https://www.grafana.com) [![Balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
+  [![Grafana 9](https://img.shields.io/badge/Grafana-9.1.7-orange)](https://www.grafana.com)
+  [![YouTube](https://img.shields.io/badge/YouTube-Playlist-red)](https://youtube.com/playlist?list=PLPow72ygztmRdzBPeQ16cwM7ZvPbXfyHv)
+  [![Balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
 
   ## Introduction
 
@@ -25,6 +27,13 @@ post-provisioning: >-
     - Allows to filter Logs using Regex pattern.
     - Requires Confirmation to restart all Services and reboot the device.
     - Environment Variables sanitized from Target State.
+
+  ## IoT Framework
+
+  This video highlights just one example of many possible solutions when you can combine balena for IoT networking and Grafana with open-source one-click away features on top.
+
+  [![IoT Framework based on balena and Grafana | Open source Grafana plugins](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/img/framework.png)](https://youtu.be/zf98C3lux54)
+
 assets:
   repository:
     type: blob.asset

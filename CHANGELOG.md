@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.4.0 (IN PROGRESS)
+## 1.4.0 (2022-10-06)
 
 ### Features / Enhancements
 
@@ -10,6 +10,7 @@
 - Add Compatibility Check Workflow (#43)
 - Update to Grafana 9.1.6 (#44)
 - Add IoT Framework video (#45)
+- Upgrade to Grafana 9.1.7 (#46)
 
 ## 1.3.0 (2022-08-18)
 
