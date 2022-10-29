@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.0 (2022-10-29)
+
+### Features / Enhancements
+
+- Update CI to Node 16 and Synchronize with Release workflow (#47)
+
 ## 1.4.0 (2022-10-06)
 
 ### Features / Enhancements

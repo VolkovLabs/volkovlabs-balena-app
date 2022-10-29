@@ -11,10 +11,10 @@ jobs:
   balena:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Balena Push
-        uses: Theia-Scientific/balena-cli@v2
+        uses: Theia-Scientific/balena-cli@v4
         with:
           balena_api_token: ${{secrets.BALENA_TOKEN}}
           balena_command: "push volkovlabs/balena-app"
