@@ -80,7 +80,7 @@ describe('RootPage', () => {
             text: 'Home',
             url: path,
             id: 'home',
-            icon: 'fa fa-fw fa-home',
+            icon: 'home',
             active: true,
           },
         ],

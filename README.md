@@ -1,8 +1,8 @@
-# Balena Application plugin for Grafana
+# Balena Application for Grafana
 
 ![Application](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/src/img/app.png)
 
-[![Grafana 9](https://img.shields.io/badge/Grafana-9.1.7-orange)](https://www.grafana.com)
+[![Grafana 9](https://img.shields.io/badge/Grafana-9.2.2-orange)](https://www.grafana.com)
 [![YouTube](https://img.shields.io/badge/YouTube-Playlist-red)](https://youtube.com/playlist?list=PLPow72ygztmRdzBPeQ16cwM7ZvPbXfyHv)
 ![CI](https://github.com/volkovlabs/volkovlabs-balena-app/workflows/CI/badge.svg)
 [![Balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
@@ -22,7 +22,7 @@ Working in a productive alliance, Balena, Grafana, and the Balena Application pl
 
 ## Getting Started
 
-The Balena application is not included in the Grafana Marketplace. It can be installed manually from our Private Repository or downloaded directly from the GitHub repository:
+The Balena Application is not included in the Grafana Catalog. It can be installed manually from our Private Repository or downloaded directly from the GitHub repository:
 
 ```bash
 grafana-cli --repo https://volkovlabs.io/plugins plugins install volkovlabs-balena-app
@@ -108,6 +108,7 @@ datasources:
 We love to hear from users, developers, and the whole community interested in this plugin. These are various ways to get in touch with us:
 
 - Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/volkovlabs-balena-app/issues/new/choose).
+- Sponsor our open-source plugins for Grafana with [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
 - Star the repository to show your support.
 
 ## License

@@ -4,6 +4,6 @@ module.exports.getWebpackConfig = (config, options) => ({
   ...config,
   resolve: {
     ...config.resolve,
-    plugins: [new TsconfigPathsPlugin()]
+    plugins: [new TsconfigPathsPlugin()],
   },
 });
