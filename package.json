@@ -1,6 +1,6 @@
 {
   "author": "Volkov Labs",
-  "description": "Balena Application plugin for Grafana",
+  "description": "Balena Application for Grafana",
   "devDependencies": {
     "@grafana/data": "9.2.2",
     "@grafana/runtime": "9.2.2",
@@ -29,5 +29,5 @@
     "upgrade": "yarn upgrade --latest",
     "watch": "grafana-toolkit plugin:dev --watch"
   },
-  "version": "1.4.0"
+  "version": "1.5.0"
 }
