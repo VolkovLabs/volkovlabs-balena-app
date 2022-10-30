@@ -1,4 +1,4 @@
-# Balena Application plugin for Grafana
+# Balena Application for Grafana
 
 ![Application](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/src/img/app.png)
 
