@@ -2,17 +2,17 @@ name: balena-app
 version: 1.4.0
 type: sw.application
 description: >-
-  The Balena Application plugin for Grafana allows to display device information and manage services using Balena Supervisor API.
+  The Balena Application for Grafana allows to display device information and manage services using Balena Supervisor API.
 post-provisioning: >-
   ![Application](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/src/img/app.png)
 
-  [![Grafana 9](https://img.shields.io/badge/Grafana-9.1.7-orange)](https://www.grafana.com)
+  [![Grafana 9](https://img.shields.io/badge/Grafana-9.2.2-orange)](https://www.grafana.com)
   [![YouTube](https://img.shields.io/badge/YouTube-Playlist-red)](https://youtube.com/playlist?list=PLPow72ygztmRdzBPeQ16cwM7ZvPbXfyHv)
   [![Balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
 
   ## Introduction
 
-  The Balena Application plugin for Grafana allows to display device information and manage services using Balena Supervisor API.
+  The Balena Application for Grafana allows to display device information and manage services using Balena Supervisor API.
 
   Working in a productive alliance, Balena, Grafana, and the Balena Application plugin simplify managing a network of non-homogenous IoT devices. If needed, a device could be made accessible directly, which means internet access is not required.
 
@@ -44,8 +44,9 @@ assets:
     data:
       url: 'https://raw.githubusercontent.com/VolkovLabs/volkovlabs-balena-app/main/img/block.png'
 data:
-  defaultDeviceType: raspberrypi4-64
+  defaultDeviceType: jetson-agx-orin-devkit
   supportedDeviceTypes:
     - raspberrypi4-64
     - jetson-xavier
     - genericx86-64-ext
+    - jetson-agx-orin-devkit
