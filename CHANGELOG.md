@@ -5,6 +5,9 @@
 ### Features / Enhancements
 
 - Update CI to Node 16 and Synchronize with Release workflow (#47)
+- Upgrade to Grafana 9.2.2 (#48)
+- Update Video thumbnails and balena description (#49)
+- Update plugin version and Supervisor dashboard (#50)
 
 ## 1.4.0 (2022-10-06)
 

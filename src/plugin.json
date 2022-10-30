@@ -10,7 +10,7 @@
       "name": "Volkov Labs",
       "url": "https://volkovlabs.io"
     },
-    "description": "The Balena Application plugin for Grafana allows to display and manage devices using Balena Supervisor API.",
+    "description": "The Balena Application for Grafana allows to display and manage devices using Balena Supervisor API.",
     "keywords": ["balena", "iot"],
     "links": [
       {

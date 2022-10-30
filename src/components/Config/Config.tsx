@@ -41,8 +41,8 @@ export class Config extends PureComponent<Props, State> {
       <FieldSet>
         <h2>{Application.name}</h2>
         <p>
-          The Balena Application plugin for Grafana allows to display device information and manage services using
-          Balena Supervisor API.
+          The Balena Application for Grafana allows to display device information and manage services using Balena
+          Supervisor API.
         </p>
       </FieldSet>
     );

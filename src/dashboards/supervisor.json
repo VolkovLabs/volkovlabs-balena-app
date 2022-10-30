@@ -6,7 +6,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.0.6"
+      "version": "9.2.2"
     },
     {
       "type": "panel",
@@ -154,7 +154,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "9.2.2",
       "targets": [
         {
           "datasource": {
@@ -229,7 +229,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 36,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [],
   "templating": {
