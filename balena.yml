@@ -6,7 +6,7 @@ description: >-
 post-provisioning: >-
   ![Application](https://raw.githubusercontent.com/volkovlabs/volkovlabs-balena-app/main/src/img/app.png)
 
-  [![Grafana 9](https://img.shields.io/badge/Grafana-9.2.2-orange)](https://www.grafana.com)
+  [![Grafana 9](https://img.shields.io/badge/Grafana-9.3.2-orange)](https://www.grafana.com)
   [![YouTube](https://img.shields.io/badge/YouTube-Playlist-red)](https://youtube.com/playlist?list=PLPow72ygztmRdzBPeQ16cwM7ZvPbXfyHv)
   [![Balena](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml/badge.svg)](https://github.com/volkovlabs/volkovlabs-balena-app/actions/workflows/balena.yml)
 
@@ -22,9 +22,9 @@ post-provisioning: >-
 
   ## Features
 
-    - Allows to display device, release information and service logs using Balena Supervisor API.
-    - Provides Services Panel to start, stop, restart Containers.
-    - Allows to filter Logs using Regex pattern.
+    - Allows to display device, release information, and service logs using Balena Supervisor API.
+    - Provides Services Panel to start, stop, and restart Containers.
+    - Allows to filter Logs using a Regex pattern.
     - Requires Confirmation to restart all Services and reboot the device.
     - Environment Variables sanitized from Target State.
 
