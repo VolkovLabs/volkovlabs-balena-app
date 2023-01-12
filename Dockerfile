@@ -6,7 +6,7 @@ ENV GF_USERS_DEFAULT_THEME=light
 ENV GF_FEATURE_TOGGLES_ENABLE=topnav
 
 # Home Dashboard
-ENV GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/plugins/volkovlabs-balena-app/dashboards/supervisor.json
+ENV GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/supervisor.json
 
 # Paths
 ENV GF_PATHS_PROVISIONING="/etc/grafana/provisioning"

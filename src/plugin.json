@@ -14,16 +14,16 @@
     "keywords": ["balena", "iot"],
     "links": [
       {
+        "name": "Documentation",
+        "url": "https://volkovlabs.io/plugins/volkovlabs-balena-app/"
+      },
+      {
         "name": "GitHub",
         "url": "https://github.com/VolkovLabs/volkovlabs-balena-app"
       },
       {
         "name": "YouTube Playlist",
         "url": "https://www.youtube.com/playlist?list=PLPow72ygztmRdzBPeQ16cwM7ZvPbXfyHv"
-      },
-      {
-        "name": "Website",
-        "url": "https://volkovlabs.io"
       }
     ],
     "logos": {
@@ -45,16 +45,9 @@
       "defaultNav": true,
       "icon": "home-alt",
       "name": "Supervisor",
-      "path": "/d/cI_2Xn3nk/",
+      "path": "/d/cI_2Xn3nk",
       "role": "Viewer",
       "type": "page"
-    },
-    {
-      "addToNav": false,
-      "name": "Balena Supervisor",
-      "path": "dashboards/supervisor.json",
-      "role": "Viewer",
-      "type": "dashboard"
     }
   ],
   "name": "Balena Application",
