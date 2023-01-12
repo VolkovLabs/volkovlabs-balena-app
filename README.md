@@ -19,7 +19,7 @@ Working in a productive alliance, Balena, Grafana, and the Balena Application pl
 
 ### Requirements
 
-- Grafana 8.5+, Grafana 9.0+ is required.
+- Grafana 9.0+ is required.
 
 ## Getting Started
 
