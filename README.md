@@ -45,8 +45,8 @@ Our custom Grafana build with the Balena Application plugin can be deployed dire
 
 | Section | Description |
 | -- | -- |
-| [balenaCloud](https://volkovlabs.io/plugins/volkovlabs-balena-app/balenaCloud) | Explains how to use balena Application in balenaCloud |
-| [Provisioning](https://volkovlabs.io/plugins/volkovlabs-balena-app/provisioning) | Demonstrates how to automatically provision balenaSupervisor Data Source|
+| [balenaCloud](https://volkovlabs.io/plugins/volkovlabs-balena-app/balenaCloud) | Explains how to use balena Application in balenaCloud. |
+| [Provisioning](https://volkovlabs.io/plugins/volkovlabs-balena-app/provisioning) | Demonstrates how to automatically provision balenaSupervisor Data Source. |
 
 ## Feedback
 
